@@ -73,7 +73,7 @@ border-radius: 25px;
           <string notr="true">background-image:url(:/images/res/images/nav-bg.jpg)</string>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="chatPage">
           <layout class="QGridLayout" name="gridLayout">
@@ -358,7 +358,7 @@ color: #4C4C4C;
 padding: 5px 20px;</string>
                  </property>
                  <property name="text">
-                  <string>TALK NAVAJO</string>
+                  <string>TALK NAV</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>

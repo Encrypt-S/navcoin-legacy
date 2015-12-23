@@ -82,7 +82,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     rpcConsole(0)
 {
     resize(850, 550);
-    setWindowTitle(tr("NavajoCoin") + " - " + tr("Wallet"));
+    setWindowTitle(tr("NAV") + " - " + tr("Wallet"));
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
     setWindowIcon(QIcon(":icons/bitcoin"));
@@ -280,7 +280,7 @@ void BitcoinGUI::createActions()
     quitAction->setToolTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About NavajoCoin"), this);
+    aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About NAV"), this);
     aboutAction->setToolTip(tr("Show information about SummerCoinV2"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
@@ -294,8 +294,8 @@ void BitcoinGUI::createActions()
     encryptWalletAction->setToolTip(tr("Encrypt or decrypt wallet"));
     encryptWalletAction->setCheckable(true);
 	
-	openUrlAction = new QAction(QIcon(":/icons/bitcoin"), tr("NavajoCoin Website"), this);
-    openUrlAction->setToolTip(tr("NavajoCoin Website"));
+    openUrlAction = new QAction(QIcon(":/icons/bitcoin"), tr("NAV Website"), this);
+    openUrlAction->setToolTip(tr("NAV Website"));
 	
     openUrlAction1 = new QAction(QIcon(":/icons/bitcoin"), tr("Buy Navajo at Bittrex"), this);
     openUrlAction->setToolTip(tr("Buy Navajo at Bittrex"));
@@ -437,7 +437,7 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
 #endif
             if(trayIcon)
             {
-                trayIcon->setToolTip(tr("NavajoCoin/SummerCoinV2 client") + QString(" ") + tr("[testnet]"));
+                trayIcon->setToolTip(tr("NAV/SummerCoinV2 client") + QString(" ") + tr("[testnet]"));
                 trayIcon->setIcon(QIcon(":/icons/toolbar_testnet"));
                 toggleHideAction->setIcon(QIcon(":/icons/toolbar_testnet"));
             }
@@ -503,7 +503,7 @@ void BitcoinGUI::createTrayIcon()
     trayIcon = new QSystemTrayIcon(this);
     trayIconMenu = new QMenu(this);
     trayIcon->setContextMenu(trayIconMenu);
-    trayIcon->setToolTip(tr("NavajoCoin/SummerCoinV2 client"));
+    trayIcon->setToolTip(tr("NAV/SummerCoinV2 client"));
     trayIcon->setIcon(QIcon(":/icons/toolbar"));
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
@@ -618,7 +618,7 @@ void BitcoinGUI::setNumConnections(int count)
     default: icon = ":/icons/connect_4"; break;
     }
     labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to NavajoCoin/SummerCoinV2 network", "", count));
+    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to NAV network", "", count));
 }
 
 void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
@@ -928,7 +928,7 @@ void BitcoinGUI::dropEvent(QDropEvent *event)
         if (nValidUrisFound)
             gotoSendCoinsPage();
         else
-            notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid NavajoCoin/SummerCoinV2 address or malformed URI parameters."));
+            notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid NAV address or malformed URI parameters."));
     }
 
     event->acceptProposedAction();
@@ -943,7 +943,7 @@ void BitcoinGUI::handleURI(QString strURI)
         gotoSendCoinsPage();
     }
     else
-        notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid NavajoCoin/SummerCoinV2 address or malformed URI parameters."));
+        notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid NAV address or malformed URI parameters."));
 }
 
 void BitcoinGUI::setEncryptionStatus(int status)

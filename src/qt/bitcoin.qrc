@@ -52,15 +52,15 @@
         <file alias="chat">res/icons/chat.png</file>
         <file>res/icons/power.png</file>
         <file>res/icons/chat_alt.png</file>
-		<file alias="reddit">res/icons/reddit.png</file>
-		<file alias="twitter">res/icons/twitter.png</file>
-		<file alias="website">res/icons/website.png</file>
+        <file alias="reddit">res/icons/reddit.png</file>
+        <file alias="twitter">res/icons/twitter.png</file>
+        <file alias="website">res/icons/website.png</file>
         <file alias="face">res/icons/face.png</file>
         <file alias="forums">res/icons/forums.png</file>
         <file alias="bittrex">res/icons/bittrex.png</file>
         <file alias="poloniex">res/icons/poloniex.png</file>
         <file alias="cryptsy">res/icons/cryptsy.png</file>
-		<file alias="alcurex">res/icons/alcurex.png</file>
+        <file alias="alcurex">res/icons/alcurex.png</file>
         <file alias="social">res/icons/social.png</file>
     </qresource>
     <qresource prefix="/smileys">
@@ -77,13 +77,15 @@
         <file alias="icon_wink">res/icons/smileys/icon_wink.png</file>
     </qresource>
     <qresource prefix="/images">
-        <file alias="about">res/images/about.png</file>
-        <file alias="splash">res/images/splash.png</file>
-        <file alias="Wallet_Logo">res/images/Wallet_Logo.png</file>
         <file alias="background">res/images/background.jpg</file>
         <file alias="p2p">res/images/p2p.png</file>
         <file alias="chatback">res/images/chatback.jpg</file>
         <file>res/images/nav-bg.jpg</file>
+        <file>res/images/Wallet_Logo.png</file>
+        <file>res/images/splash_testnet.png</file>
+        <file>res/images/about.png</file>
+        <file>res/images/splash-resize.png</file>
+        <file alias="splash">res/images/splash.png</file>
     </qresource>
     <qresource prefix="/images2">
         <file alias="1">res/images/images2/1.jpg</file>

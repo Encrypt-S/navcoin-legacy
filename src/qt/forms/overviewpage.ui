@@ -18,7 +18,7 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0,0">
+    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0,0,0">
      <property name="sizeConstraint">
       <enum>QLayout::SetMinimumSize</enum>
      </property>
@@ -290,11 +290,27 @@
           <string notr="true">QLabel{qproperty-alignment: AlignCenter; }</string>
          </property>
          <property name="text">
-          <string>Navajocoin - The Unbreakable Code</string>
+          <string>NAV - The Unbreakable Code</string>
          </property>
         </widget>
        </item>
       </layout>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../bitcoin.qrc">:/images/res/images/splash-resize.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </item>
      <item>
       <spacer name="verticalSpacer_4">
@@ -332,7 +348,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../bitcoin.qrc">:/images/Wallet_Logo</pixmap>
+          <pixmap>:/images/Wallet_Logo</pixmap>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
