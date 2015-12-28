@@ -1,9 +1,0 @@
-<!--
-Resource File
--->
-<RCC>
-  <qresource prefix="/" >
-    <file>user.png</file>
-    <file>nav-bg.jpg</file>
-  </qresource>
-</RCC>
