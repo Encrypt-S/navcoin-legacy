@@ -204,6 +204,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/addrman.h \
     src/base58.h \
     src/bignum.h \
+	src/chainparams.h \
     src/checkpoints.h \
     src/compat.h \
     src/coincontrol.h \
@@ -309,6 +310,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
 	src/qt/rpcchatwindow.cpp \
 	src/qt/server.cpp \
     src/alert.cpp \
+	src/chainparams.cpp \
     src/version.cpp \
     src/sync.cpp \
     src/util.cpp \
