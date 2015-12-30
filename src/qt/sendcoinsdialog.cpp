@@ -33,6 +33,9 @@
 #include <QtGui>
 #include <QDebug>
 
+#include <algorithm>
+#include <iterator>
+
 #include <openssl/aes.h>
 #include <QSslSocket>
 
@@ -140,40 +143,86 @@ SendCoinsDialog::~SendCoinsDialog()
     delete ui;
 }
 
-void SendCoinsDialog::apiRequest(QNetworkReply *reply){
+bool SendCoinsDialog::chooseServer(QJsonArray anonServers, QString localHash)
+{
+    int max = anonServers.size();
 
-
-    QString rawReply = reply->readAll();
-
-    QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
-
-    QJsonObject jsonObject = jsonDoc.object();
-
-    QString type = jsonObject["type"].toString();
-
-    if(type == "SUCCESS"){
-
-        QString address = jsonObject["address"].toString();
-        QString publicKey = jsonObject["public_key"].toString();
-        QString minAmount = jsonObject["min_amount"].toString();
-        QString maxAmount = jsonObject["max_amount"].toString();
-        QString txFee = jsonObject["transaction_fee"].toString();
-
-
-
-        this->sendCoins(address);
-
-    }else{
+    if(serversTried.size() >= max) {
         QMessageBox::warning(this, tr("Anonymous Transaction"),
-        tr("We were unable to locate an active Anonymous node, please try again later."),
+        tr("Unable to contact a verified server, please try again later."),
         QMessageBox::Ok, QMessageBox::Ok);
+        return false;
     }
 
+    //@TODO: refactor the random selection to be more efficient, eg. making array of possibilites then removing them once tried.
+
+    int randomNumber = qrand() % max;
+
+    bool tried = false;
+    if(serversTried.size() > 0){
+        for (int i = 0; i < serversTried.size(); i++){
+            if(serversTried.at(i) == randomNumber) {
+                tried = true;
+            }
+        }
+    }
+
+    if(tried == false) {
+        QJsonObject randomAnon = anonServers.at(randomNumber).toObject();
+        bool success = this->testServer(randomAnon["server"].toString(), localHash);
+
+        if(success == false) {
+            serversTried.push_back(randomNumber);
+           return this->chooseServer(anonServers, localHash);
+        }else{
+            return true;
+        }
+
+    }else{
+        return this->chooseServer(anonServers, localHash);
+    }
 }
 
-void SendCoinsDialog::sslRequest()
+bool SendCoinsDialog::testServer(QString serverAddress, QString localHash)
 {
-    qDebug() << "sslRequest";
+
+    QSslSocket *socket = new QSslSocket(this);
+    socket->setPeerVerifyMode(socket->VerifyNone);
+
+    socket->connectToHostEncrypted(serverAddress, 443);
+
+    if(!socket->waitForEncrypted()){
+        qDebug() << socket->errorString();
+        return false;
+    }
+
+    QString reqString = QString("POST /api/check-node HTTP/1.1\r\n" \
+                        "Host: %1\r\n" \
+                        "Content-Type: application/x-www-form-urlencoded\r\n" \
+                        "Connection: Close\r\n\r\n").arg(serverAddress);
+
+    socket->write(reqString.toUtf8());
+
+    while (socket->waitForReadyRead()){
+
+        while(socket->canReadLine()){
+            QString line = socket->readLine();
+        }
+
+        QString rawReply = socket->readAll();
+        QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
+        QJsonObject jsonObject = jsonDoc.object();
+        QString type = jsonObject["type"].toString();
+        QJsonObject jsonData = jsonObject["data"].toObject();
+        QString serverHash = jsonData["hash"].toString();
+
+        if(type == "SUCCESS" && serverHash == localHash) {
+            selectedServer = jsonData;
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 void SendCoinsDialog::on_sendButton_clicked()
@@ -308,9 +357,40 @@ void SendCoinsDialog::on_sendButton_clicked()
         this->sendCoins(node);
     }else{
 
+
+        QString anonFileContents;
+        QString anonFilePath = QString("%1%2%3").arg(GetDefaultDataDir().string().c_str()).arg(QDir::separator()).arg("anon.dat");
+        QFile anonFile(anonFilePath);
+        anonFile.open(QIODevice::ReadOnly | QIODevice::Text);
+        anonFileContents = anonFile.readAll();
+        anonFile.close();
+
+        QJsonDocument anonJsonDoc =  QJsonDocument::fromJson(anonFileContents.toUtf8());
+        QJsonObject anonJsonObject = anonJsonDoc.object();
+        QJsonArray anonServers = anonJsonObject["servers"].toArray();
+        QString localHash = anonJsonObject["hash"].toString();
+        int max = anonServers.size();
+
+        if(max <= 0) {
+            QMessageBox::warning(this, tr("Anonymous Transaction"),
+            tr("Your server list appears to be empty, please wait for peer network sync."),
+            QMessageBox::Ok, QMessageBox::Ok);
+            return;
+        }
+
+        serversTried.clear();
+
+        bool serverReady = this->chooseServer(anonServers, localHash);
+
+        qDebug() << serverReady;
+        qDebug() << selectedServer;
+
+        /*
+         * @TODO: wire this back together once sever is selected
+         *
+
         QSslSocket *socket = new QSslSocket(this);
         socket->setPeerVerifyMode(socket->VerifyNone);
-        //connect(socket, SIGNAL(encrypted()), this, SLOT(sslRequest()));
 
         socket->connectToHostEncrypted("api.navajocoin.org", 443);
 
@@ -344,12 +424,17 @@ void SendCoinsDialog::on_sendButton_clicked()
 
             int contentLength = qAddress.length() + 8;
 
-            QString reqString = QString("POST /api/select-incoming-node HTTP/1.1\r\n" \
-                                "Host: api.navajocoin.org\r\n" \
+
+
+            qDebug() << randomAnon["server"].toString();
+
+
+            QString reqString = QString("POST /api/check-node HTTP/1.1\r\n" \
+                                "Host: %1\r\n" \
                                 "Content-Type: application/x-www-form-urlencoded\r\n" \
-                                "Content-Length: %1\r\n" \
+                                "Content-Length: %2\r\n" \
                                 "Connection: Close\r\n\r\n" \
-                                "address=%2\r\n").arg(contentLength).arg(qAddress);
+                                "address=%3\r\n").arg(randomAnon["server"].toString()).arg(contentLength).arg(qAddress);
 
             socket->write(reqString.toUtf8());
 
@@ -365,7 +450,7 @@ void SendCoinsDialog::on_sendButton_clicked()
                 QJsonObject jsonObject = jsonDoc.object();
                 QString type = jsonObject["type"].toString();
 
-                //qDebug() << rawReply;
+                qDebug() << rawReply;
 
                 if(type == "SUCCESS"){
 
@@ -391,6 +476,8 @@ void SendCoinsDialog::on_sendButton_clicked()
 
 
                 }else{
+                    qDebug() << "NOT SUCCESS";
+                    qDebug() << jsonObject;
                     QMessageBox::warning(this, tr("Anonymous Transaction"),
                     tr("We were unable to locate an active Anonymous node, please try again later."),
                     QMessageBox::Ok, QMessageBox::Ok);
@@ -400,7 +487,7 @@ void SendCoinsDialog::on_sendButton_clicked()
             }//wait for ready read
 
         }//no socket error
-
+        */
 
     }//else
 

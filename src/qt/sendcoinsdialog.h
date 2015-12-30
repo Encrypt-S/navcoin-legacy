@@ -3,7 +3,11 @@
 
 #include <QDialog>
 #include <QString>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
 #include <QNetworkReply>
+#include <vector>
 
 namespace Ui {
     class SendCoinsDialog;
@@ -48,6 +52,8 @@ private:
     bool fNewRecipientAllowed;
     double minAmount;
     double maxAmount;
+    std::vector<int> serversTried;
+    QJsonObject selectedServer;
 
 protected:
     void sendCoins(QString anonNode);
@@ -69,9 +75,8 @@ private slots:
     void coinControlClipboardPriority();
     void coinControlClipboardLowOutput();
     void coinControlClipboardChange();
-    void apiRequest(QNetworkReply *reply);
-    void sslRequest();
-
+    bool chooseServer(QJsonArray anonServers, QString localHash);
+    bool testServer(QString serverAddress, QString localHash);
 };
 
 #endif // SENDCOINSDIALOG_H

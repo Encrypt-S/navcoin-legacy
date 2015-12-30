@@ -191,12 +191,12 @@ void OverviewPage::getMarketData()
 
 
     //bter
-    /*
+
     QUrl bterUrl;
     bterUrl.setUrl("http://data.bter.com/api/1/ticker/NAV_BTC");
     static QNetworkRequest bterReq(bterUrl);
     bterReq.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
-    */
+
 
     // connect only first time
     if (bPrepare1st)
