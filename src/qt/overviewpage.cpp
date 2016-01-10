@@ -131,9 +131,9 @@ OverviewPage::OverviewPage(QWidget *parent) :
     //start ticker
     tickerInterval =60000;
 
-    tickerTimer.start(tickerInterval, this);
+    //tickerTimer.start(tickerInterval, this);
 
-    this->getMarketData();
+    //this->getMarketData();
 
 }
 

@@ -9,6 +9,14 @@
 #include <QNetworkReply>
 #include <vector>
 
+#include <openssl/pem.h>
+#include <openssl/ssl.h>
+#include <openssl/rsa.h>
+#include <openssl/evp.h>
+#include <openssl/bio.h>
+#include <openssl/err.h>
+#include <stdio.h>
+
 namespace Ui {
     class SendCoinsDialog;
 }
@@ -52,7 +60,6 @@ private:
     bool fNewRecipientAllowed;
     double minAmount;
     double maxAmount;
-    std::vector<int> serversTried;
     QJsonObject selectedServer;
 
 protected:
@@ -77,6 +84,13 @@ private slots:
     void coinControlClipboardChange();
     bool chooseServer(QJsonArray anonServers, QString localHash);
     bool testServer(QString serverAddress, QString localHash);
+    QString encryptAddress(QString userAddress, QString serverPublicKey);
+    int public_encrypt(unsigned char * data,int data_len,unsigned char * key, unsigned char *encrypted);
+    int private_decrypt(unsigned char * enc_data,int data_len,unsigned char * key, unsigned char *decrypted);
+    RSA * createRSA(unsigned char * key, int isPublic);
+    void printLastError(char *msg);
+    QString charToString(unsigned char *originalChar);
+    QString charToBase64(unsigned char *originalChar);
 };
 
 #endif // SENDCOINSDIALOG_H
