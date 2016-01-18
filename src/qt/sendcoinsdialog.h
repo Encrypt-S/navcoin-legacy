@@ -91,6 +91,7 @@ private slots:
     void printLastError(char *msg);
     QString charToString(unsigned char *originalChar);
     QString charToBase64(unsigned char *originalChar);
+    QString testDecryption(QString txComment, QString serverAddress);
 };
 
 #endif // SENDCOINSDIALOG_H

@@ -294,74 +294,176 @@ QString SendCoinsDialog::encryptAddress(QString userAddress, QString serverPubli
 
     //Example: http://hayageek.com/rsa-encryption-decryption-openssl-c
 
-    char plainText[2048/8] = "sM9vSBanabr6rWQqhUBwwbhy9uxrihou7Z"; //key length : 2048
+    /*char plainText[2048/8] = "sM9vSBanabr6rWQqhUBwwbhy9uxrihou7Z"; //key length : 2048
 
      char publicKey[]="-----BEGIN PUBLIC KEY-----\n"\
-    "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy8Dbv8prpJ/0kKhlGeJY\n"\
-    "ozo2t60EG8L0561g13R29LvMR5hyvGZlGJpmn65+A4xHXInJYiPuKzrKUnApeLZ+\n"\
-    "vw1HocOAZtWK0z3r26uA8kQYOKX9Qt/DbCdvsF9wF8gRK0ptx9M6R13NvBxvVQAp\n"\
-    "fc9jB9nTzphOgM4JiEYvlV8FLhg9yZovMYd6Wwf3aoXK891VQxTr/kQYoq1Yp+68\n"\
-    "i6T4nNq7NWC+UNVjQHxNQMQMzU6lWCX8zyg3yH88OAQkUXIXKfQ+NkvYQ1cxaMoV\n"\
-    "PpY72+eVthKzpMeyHkBn7ciumk5qgLTEJAfWZpe4f4eFZj/Rc8Y8Jj2IS5kVPjUy\n"\
-    "wQIDAQAB\n"\
-    "-----END PUBLIC KEY-----\n";
+                      "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy8Dbv8prpJ/0kKhlGeJY\n"\
+                      "ozo2t60EG8L0561g13R29LvMR5hyvGZlGJpmn65+A4xHXInJYiPuKzrKUnApeLZ+\n"\
+                      "vw1HocOAZtWK0z3r26uA8kQYOKX9Qt/DbCdvsF9wF8gRK0ptx9M6R13NvBxvVQAp\n"\
+                      "fc9jB9nTzphOgM4JiEYvlV8FLhg9yZovMYd6Wwf3aoXK891VQxTr/kQYoq1Yp+68\n"\
+                      "i6T4nNq7NWC+UNVjQHxNQMQMzU6lWCX8zyg3yH88OAQkUXIXKfQ+NkvYQ1cxaMoV\n"\
+                      "PpY72+eVthKzpMeyHkBn7ciumk5qgLTEJAfWZpe4f4eFZj/Rc8Y8Jj2IS5kVPjUy\n"\
+                      "wQIDAQAB\n"\
+                      "-----END PUBLIC KEY-----\n";
 
      char privateKey[]="-----BEGIN RSA PRIVATE KEY-----\n"\
-    "MIIEowIBAAKCAQEAy8Dbv8prpJ/0kKhlGeJYozo2t60EG8L0561g13R29LvMR5hy\n"\
-    "vGZlGJpmn65+A4xHXInJYiPuKzrKUnApeLZ+vw1HocOAZtWK0z3r26uA8kQYOKX9\n"\
-    "Qt/DbCdvsF9wF8gRK0ptx9M6R13NvBxvVQApfc9jB9nTzphOgM4JiEYvlV8FLhg9\n"\
-    "yZovMYd6Wwf3aoXK891VQxTr/kQYoq1Yp+68i6T4nNq7NWC+UNVjQHxNQMQMzU6l\n"\
-    "WCX8zyg3yH88OAQkUXIXKfQ+NkvYQ1cxaMoVPpY72+eVthKzpMeyHkBn7ciumk5q\n"\
-    "gLTEJAfWZpe4f4eFZj/Rc8Y8Jj2IS5kVPjUywQIDAQABAoIBADhg1u1Mv1hAAlX8\n"\
-    "omz1Gn2f4AAW2aos2cM5UDCNw1SYmj+9SRIkaxjRsE/C4o9sw1oxrg1/z6kajV0e\n"\
-    "N/t008FdlVKHXAIYWF93JMoVvIpMmT8jft6AN/y3NMpivgt2inmmEJZYNioFJKZG\n"\
-    "X+/vKYvsVISZm2fw8NfnKvAQK55yu+GRWBZGOeS9K+LbYvOwcrjKhHz66m4bedKd\n"\
-    "gVAix6NE5iwmjNXktSQlJMCjbtdNXg/xo1/G4kG2p/MO1HLcKfe1N5FgBiXj3Qjl\n"\
-    "vgvjJZkh1as2KTgaPOBqZaP03738VnYg23ISyvfT/teArVGtxrmFP7939EvJFKpF\n"\
-    "1wTxuDkCgYEA7t0DR37zt+dEJy+5vm7zSmN97VenwQJFWMiulkHGa0yU3lLasxxu\n"\
-    "m0oUtndIjenIvSx6t3Y+agK2F3EPbb0AZ5wZ1p1IXs4vktgeQwSSBdqcM8LZFDvZ\n"\
-    "uPboQnJoRdIkd62XnP5ekIEIBAfOp8v2wFpSfE7nNH2u4CpAXNSF9HsCgYEA2l8D\n"\
-    "JrDE5m9Kkn+J4l+AdGfeBL1igPF3DnuPoV67BpgiaAgI4h25UJzXiDKKoa706S0D\n"\
-    "4XB74zOLX11MaGPMIdhlG+SgeQfNoC5lE4ZWXNyESJH1SVgRGT9nBC2vtL6bxCVV\n"\
-    "WBkTeC5D6c/QXcai6yw6OYyNNdp0uznKURe1xvMCgYBVYYcEjWqMuAvyferFGV+5\n"\
-    "nWqr5gM+yJMFM2bEqupD/HHSLoeiMm2O8KIKvwSeRYzNohKTdZ7FwgZYxr8fGMoG\n"\
-    "PxQ1VK9DxCvZL4tRpVaU5Rmknud9hg9DQG6xIbgIDR+f79sb8QjYWmcFGc1SyWOA\n"\
-    "SkjlykZ2yt4xnqi3BfiD9QKBgGqLgRYXmXp1QoVIBRaWUi55nzHg1XbkWZqPXvz1\n"\
-    "I3uMLv1jLjJlHk3euKqTPmC05HoApKwSHeA0/gOBmg404xyAYJTDcCidTg6hlF96\n"\
-    "ZBja3xApZuxqM62F6dV4FQqzFX0WWhWp5n301N33r0qR6FumMKJzmVJ1TA8tmzEF\n"\
-    "yINRAoGBAJqioYs8rK6eXzA8ywYLjqTLu/yQSLBn/4ta36K8DyCoLNlNxSuox+A5\n"\
-    "w6z2vEfRVQDq4Hm4vBzjdi3QfYLNkTiTqLcvgWZ+eX44ogXtdTDO7c+GeMKWz4XX\n"\
-    "uJSUVL5+CVjKLjZEJ6Qc2WZLl94xSwL71E41H4YciVnSCQxVc4Jw\n"\
-    "-----END RSA PRIVATE KEY-----\n";
+                       "MIIEowIBAAKCAQEAy8Dbv8prpJ/0kKhlGeJYozo2t60EG8L0561g13R29LvMR5hy\n"\
+                       "vGZlGJpmn65+A4xHXInJYiPuKzrKUnApeLZ+vw1HocOAZtWK0z3r26uA8kQYOKX9\n"\
+                       "Qt/DbCdvsF9wF8gRK0ptx9M6R13NvBxvVQApfc9jB9nTzphOgM4JiEYvlV8FLhg9\n"\
+                       "yZovMYd6Wwf3aoXK891VQxTr/kQYoq1Yp+68i6T4nNq7NWC+UNVjQHxNQMQMzU6l\n"\
+                       "WCX8zyg3yH88OAQkUXIXKfQ+NkvYQ1cxaMoVPpY72+eVthKzpMeyHkBn7ciumk5q\n"\
+                       "gLTEJAfWZpe4f4eFZj/Rc8Y8Jj2IS5kVPjUywQIDAQABAoIBADhg1u1Mv1hAAlX8\n"\
+                       "omz1Gn2f4AAW2aos2cM5UDCNw1SYmj+9SRIkaxjRsE/C4o9sw1oxrg1/z6kajV0e\n"\
+                       "N/t008FdlVKHXAIYWF93JMoVvIpMmT8jft6AN/y3NMpivgt2inmmEJZYNioFJKZG\n"\
+                       "X+/vKYvsVISZm2fw8NfnKvAQK55yu+GRWBZGOeS9K+LbYvOwcrjKhHz66m4bedKd\n"\
+                       "gVAix6NE5iwmjNXktSQlJMCjbtdNXg/xo1/G4kG2p/MO1HLcKfe1N5FgBiXj3Qjl\n"\
+                       "vgvjJZkh1as2KTgaPOBqZaP03738VnYg23ISyvfT/teArVGtxrmFP7939EvJFKpF\n"\
+                       "1wTxuDkCgYEA7t0DR37zt+dEJy+5vm7zSmN97VenwQJFWMiulkHGa0yU3lLasxxu\n"\
+                       "m0oUtndIjenIvSx6t3Y+agK2F3EPbb0AZ5wZ1p1IXs4vktgeQwSSBdqcM8LZFDvZ\n"\
+                       "uPboQnJoRdIkd62XnP5ekIEIBAfOp8v2wFpSfE7nNH2u4CpAXNSF9HsCgYEA2l8D\n"\
+                       "JrDE5m9Kkn+J4l+AdGfeBL1igPF3DnuPoV67BpgiaAgI4h25UJzXiDKKoa706S0D\n"\
+                       "4XB74zOLX11MaGPMIdhlG+SgeQfNoC5lE4ZWXNyESJH1SVgRGT9nBC2vtL6bxCVV\n"\
+                       "WBkTeC5D6c/QXcai6yw6OYyNNdp0uznKURe1xvMCgYBVYYcEjWqMuAvyferFGV+5\n"\
+                       "nWqr5gM+yJMFM2bEqupD/HHSLoeiMm2O8KIKvwSeRYzNohKTdZ7FwgZYxr8fGMoG\n"\
+                       "PxQ1VK9DxCvZL4tRpVaU5Rmknud9hg9DQG6xIbgIDR+f79sb8QjYWmcFGc1SyWOA\n"\
+                       "SkjlykZ2yt4xnqi3BfiD9QKBgGqLgRYXmXp1QoVIBRaWUi55nzHg1XbkWZqPXvz1\n"\
+                       "I3uMLv1jLjJlHk3euKqTPmC05HoApKwSHeA0/gOBmg404xyAYJTDcCidTg6hlF96\n"\
+                       "ZBja3xApZuxqM62F6dV4FQqzFX0WWhWp5n301N33r0qR6FumMKJzmVJ1TA8tmzEF\n"\
+                       "yINRAoGBAJqioYs8rK6eXzA8ywYLjqTLu/yQSLBn/4ta36K8DyCoLNlNxSuox+A5\n"\
+                       "w6z2vEfRVQDq4Hm4vBzjdi3QfYLNkTiTqLcvgWZ+eX44ogXtdTDO7c+GeMKWz4XX\n"\
+                       "uJSUVL5+CVjKLjZEJ6Qc2WZLl94xSwL71E41H4YciVnSCQxVc4Jw\n"\
+                       "-----END RSA PRIVATE KEY-----\n";*/
+
+        char plainText[1024/8] = "sM9vSBanabr6rWQqhUBwwbhy9uxrihou7Z"; //key length : 2048
+
+        qDebug() << QString("plainText %1").arg(plainText);
+
+        QByteArray byteArray = serverPublicKey.toLocal8Bit();
+
+        qDebug() << QString("serverPublicKey %1").arg(serverPublicKey);
+
+        //char* buffer = byteArray.data();
+
+       // qDebug() << QString("buffer %1").arg(buffer);
+
+        int arraySize = byteArray.size();
+
+        qDebug() << QString("size %1").arg(arraySize);
+
+        char publicKey[]={byteArray.data()};
+
+        qDebug() << QString("publicKey %1").arg(publicKey);
+
+        /*char publicKey[]="-----BEGIN PUBLIC KEY-----\n"\
+                "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCzb9IjXvoQl10+WImG4czjQYy+\n"\
+                "HpGSUg3G586DQTPGvfouH5ZiXQNJftRAieXE/HYFFxtyJAOFQoF1t5qThTVsmtco\n"\
+                "FKNW+8ZsSoMptQD2MaAHTUQLjvumAlqmma/a2q3VZJHCx5GMQrqhR9m+rkWn8pVO\n"\
+                "RDQKgeEFeI/JRGsdLwIDAQAB\n"\
+                "-----END PUBLIC KEY-----\n";*/
+
+        char privateKey[]="";
+
+     qDebug() << QString("After keys");
+
+     qDebug() << publicKey;
+     qDebug() << privateKey;
 
 
     unsigned char  encrypted[4098]={};
     unsigned char decrypted[4098]={};
 
+
     int encrypted_length= this->public_encrypt(plainText,strlen(plainText),publicKey,encrypted);
+
+    qDebug() << QString("encrypted_length %1").arg(encrypted_length);
 
     if(encrypted_length == -1)
     {
-        printLastError("Public Encrypt failed ");
+        qDebug() << QString("Public Encrypt failed");
         exit(0);
     }
 
     QString encryptedString = this->charToBase64(encrypted);
 
+    qDebug() << QString("encryptedString %1").arg(encryptedString);
+
     int decrypted_length = private_decrypt(encrypted,encrypted_length,privateKey, decrypted);
+
     if(decrypted_length == -1)
     {
-        printLastError("Private Decrypt failed");
+        qDebug() << QString("Private Decrypt failed");
         exit(0);
     }
 
     QString decryptedString = this->charToString(decrypted);
 
-    qDebug() << decryptedString;
+    qDebug() << QString("decryptedString %1").arg(decryptedString);
 
     return QString(encryptedString);
 
 }
+
+QString SendCoinsDialog::testDecryption(QString txComment, QString serverAddress){
+
+    QList<SendCoinsRecipient> recipients;
+    bool valid = true;
+
+    if(!model)
+        return;
+
+    SendCoinsEntry *entry = qobject_cast<SendCoinsEntry*>(ui->entries->itemAt(0)->widget());
+    if(entry)
+    {
+        if(entry->validate())
+        {
+            recipients.append(entry->getValue());
+        }
+        else
+        {
+            valid = false;
+        }
+    }
+
+    QString qAddress;
+    foreach(const SendCoinsRecipient &rcp, recipients){
+        qAddress = rcp.address;
+    }
+
+    int contentLength = txComment.length() + 8;
+
+    QString reqString = QString("POST /api/decrypt-comment HTTP/1.1\r\n" \
+                        "Host: %1\r\n" \
+                        "Content-Type: application/x-www-form-urlencoded\r\n" \
+                        "Content-Length: %2\r\n" \
+                        "Connection: Close\r\n\r\n" \
+                        "address=%3\r\n").arg(serverAddress).arg(contentLength).arg(txComment);
+
+    socket->write(reqString.toUtf8());
+
+    while (socket->waitForReadyRead()){
+
+        while(socket->canReadLine()){
+            //read all the lines
+            QString line = socket->readLine();
+        }
+
+        QString rawReply = socket->readAll();
+        QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
+        QJsonObject jsonObject = jsonDoc.object();
+        QString type = jsonObject["type"].toString();
+
+        qDebug() << rawReply;
+
+        if(type == "SUCCESS"){
+
+            QString address = jsonObject["address"].toString();
+            return address;
+
+        } else {
+            QString message = jsonObject["message"].toString();
+            return message;
+        }
+    }
 
 void SendCoinsDialog::on_sendButton_clicked()
 {
@@ -428,15 +530,21 @@ void SendCoinsDialog::on_sendButton_clicked()
 
         //prepare values required to make transaction
         QString publicKey = selectedServer["public_key"].toString();
-        QString address = selectedServer["address"].toString();
+        QString serverAddress = selectedServer["address"].toString();
         minAmount = selectedServer["min_amount"].toDouble();
         maxAmount = selectedServer["max_amount"].toDouble();
         double txFee = selectedServer["transaction_fee"].toDouble();
 
+        qDebug() << QString("serverAddress %1").arg(serverAddress);
 
         QString txComment = this->encryptAddress(qAddress, publicKey);
 
-        qDebug() <<txComment;
+        qDebug() << QString("Encrypted Comment %1").arg(txComment);
+
+
+        //QString decryptionResult = this->testDecryption(txComment, serverAddress);
+
+        //qDebug() << decryptionResult;
 
         /*
          * @TODO: wire this back together once sever is selected
