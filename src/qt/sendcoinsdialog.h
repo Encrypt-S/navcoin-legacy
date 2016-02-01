@@ -61,6 +61,7 @@ private:
     double minAmount;
     double maxAmount;
     QJsonObject selectedServer;
+    QString selectedServerAddress;
 
 protected:
     void sendCoins(QString anonNode);
@@ -90,8 +91,7 @@ private slots:
     RSA * createRSA(unsigned char * key, int isPublic);
     void printLastError(char *msg);
     QString charToString(unsigned char *originalChar);
-    QString charToBase64(unsigned char *originalChar);
-    QString testDecryption(QString txComment, QString serverAddress);
+    bool testEncryption(QString txComment);
 };
 
 #endif // SENDCOINSDIALOG_H

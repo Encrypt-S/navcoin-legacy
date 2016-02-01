@@ -203,6 +203,7 @@ bool SendCoinsDialog::testServer(QString serverAddress, QString localHash)
 
         if(type == "SUCCESS" && serverHash == localHash) {
             selectedServer = jsonData;
+            selectedServerAddress = serverAddress;
             return true;
         } else {
             return false;
@@ -281,6 +282,10 @@ QString SendCoinsDialog::encryptAddress(QString userAddress, QString serverPubli
     memcpy( publicKey, serverPublicKey.toStdString().c_str() ,serverPublicKey.size());
     publicKey[serverPublicKey.size()] = 0;
 
+    char plainText[userAddress.size()+1];
+    memcpy( plainText, userAddress.toStdString().c_str() ,userAddress.size());
+    plainText[userAddress.size()] = 0;
+
     unsigned char  encrypted[4098]={};
 
     int encrypted_length= this->public_encrypt(plainText,strlen(plainText),publicKey,encrypted);
@@ -289,6 +294,8 @@ QString SendCoinsDialog::encryptAddress(QString userAddress, QString serverPubli
     {
         qDebug() << QString("Public Encrypt failed");
         exit(0);
+    } else {
+        QString encryptedString = this->charToString(encrypted);
     }
 
     QByteArray convertedString = QByteArray(encrypted);
@@ -299,57 +306,36 @@ QString SendCoinsDialog::encryptAddress(QString userAddress, QString serverPubli
 
 }
 
-QString SendCoinsDialog::testDecryption(QString txComment, QString serverAddress){
+bool SendCoinsDialog::testEncryption(QString txComment){
 
     QSslSocket *socket = new QSslSocket(this);
     socket->setPeerVerifyMode(socket->VerifyNone);
 
-    socket->connectToHostEncrypted("anon.navajocoin.org", 443);
+    socket->connectToHostEncrypted(selectedServerAddress, 443);
 
     if(!socket->waitForEncrypted()){
         qDebug() << socket->errorString();
-        exit(0);
+        return false;
     }
 
-    QList<SendCoinsRecipient> recipients;
-    bool valid = true;
+    QByteArray urlEncoded = QUrl::toPercentEncoding(txComment);
 
-    if(!model)
-        return;
+    QString urlEncodedQString = QString(urlEncoded);
 
-    SendCoinsEntry *entry = qobject_cast<SendCoinsEntry*>(ui->entries->itemAt(0)->widget());
-    if(entry)
-    {
-        if(entry->validate())
-        {
-            recipients.append(entry->getValue());
-        }
-        else
-        {
-            valid = false;
-        }
-    }
+    int contentLength = urlEncoded.length() + 10;
 
-    QString qAddress;
-    foreach(const SendCoinsRecipient &rcp, recipients){
-        qAddress = rcp.address;
-    }
-
-    int contentLength = txComment.length() + 8;
-
-    QString reqString = QString("POST /api/decrypt-comment HTTP/1.1\r\n" \
+    QString reqString = QString("POST /api/check-encryption HTTP/1.1\r\n" \
                         "Host: %1\r\n" \
                         "Content-Type: application/x-www-form-urlencoded\r\n" \
                         "Content-Length: %2\r\n" \
                         "Connection: Close\r\n\r\n" \
-                        "address=%3\r\n").arg(serverAddress).arg(contentLength).arg(txComment);
+                        "encrypted=%3\r\n").arg(selectedServerAddress).arg(contentLength).arg(urlEncodedQString);
 
     socket->write(reqString.toUtf8());
 
     while (socket->waitForReadyRead()){
 
         while(socket->canReadLine()){
-            //read all the lines
             QString line = socket->readLine();
         }
 
@@ -358,16 +344,10 @@ QString SendCoinsDialog::testDecryption(QString txComment, QString serverAddress
         QJsonObject jsonObject = jsonDoc.object();
         QString type = jsonObject["type"].toString();
 
-        qDebug() << rawReply;
-
-        if(type == "SUCCESS"){
-
-            QString address = jsonObject["address"].toString();
-            return address;
-
+        if(type == "SUCCESS") {
+            return true;
         } else {
-            QString message = jsonObject["message"].toString();
-            return message;
+            return false;
         }
     }
 }
@@ -379,7 +359,6 @@ void SendCoinsDialog::on_sendButton_clicked()
         QString node = QString("");
         this->sendCoins(node);
     }else{
-
 
         QString anonFileContents;
         QString anonFilePath = QString("%1%2%3").arg(GetDefaultDataDir().string().c_str()).arg(QDir::separator()).arg("anon.dat");
@@ -406,8 +385,9 @@ void SendCoinsDialog::on_sendButton_clicked()
         QList<SendCoinsRecipient> recipients;
         bool valid = true;
 
-        if(!model)
+        if(!model){
             return;
+        }
 
         SendCoinsEntry *entry = qobject_cast<SendCoinsEntry*>(ui->entries->itemAt(0)->widget());
         if(entry)
@@ -439,19 +419,20 @@ void SendCoinsDialog::on_sendButton_clicked()
 
         QString publicKey = selectedServer["public_key"].toString();
         QString serverAddress = selectedServer["address"].toString();
-        minAmount = selectedServer["min_amount"].toDouble();
-        maxAmount = selectedServer["max_amount"].toDouble();
-        double txFee = selectedServer["transaction_fee"].toDouble();
+        minAmount = selectedServer["min_amount"].toString().toDouble();
+        maxAmount = selectedServer["max_amount"].toString().toDouble();
+        double txFee = selectedServer["transaction_fee"].toString().toDouble();
 
         QString txComment = this->encryptAddress(qAddress, publicKey);
 
-        qDebug() << QString("Encrypted Comment %1").arg(txComment);
+        bool decryptionResult = this->testEncryption(txComment);
 
-
-        QString decryptionResult = this->testDecryption(txComment, serverAddress);
-
-        qDebug() << decryptionResult;
-
+        if(!decryptionResult) {
+            QMessageBox::warning(this, tr("Anonymous Transaction"),
+            tr("Unable to verify encryption, please try again."),
+            QMessageBox::Ok, QMessageBox::Ok);
+            return false;
+        }
 
         model->setAnonDetails(minAmount, maxAmount, txComment);
 
@@ -461,7 +442,7 @@ void SendCoinsDialog::on_sendButton_clicked()
         reply = QMessageBox::question(this, "Anonymous Transaction", messageString, QMessageBox::Yes|QMessageBox::No);
 
         if(reply == QMessageBox::Yes){
-            this->sendCoins(address);
+            this->sendCoins(serverAddress);
         }
 
     }//else
