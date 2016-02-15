@@ -12,6 +12,17 @@
 #include "ui_interface.h"
 #include "ntp.h"
 
+#include <QNetworkRequest>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QUrl>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QTableWidgetItem>
+#include <QtGui>
+#include <QDebug>
+
 #ifdef WIN32
 #include <string.h>
 #endif
@@ -1625,8 +1636,10 @@ void ThreadMessageHandler2(void* parg)
             // Receive messages
             {
                 TRY_LOCK(pnode->cs_vRecv, lockRecv);
-                if (lockRecv)
+                if (lockRecv) {
+                    qDebug() << pnode;
                     ProcessMessages(pnode);
+                }
             }
             if (fShutdown)
                 return;
@@ -1634,8 +1647,10 @@ void ThreadMessageHandler2(void* parg)
             // Send messages
             {
                 TRY_LOCK(pnode->cs_vSend, lockSend);
-                if (lockSend)
+                if (lockSend) {
+                    qDebug() << pnode;
                     SendMessages(pnode, pnode == pnodeTrickle);
+                }
             }
             if (fShutdown)
                 return;
@@ -1660,8 +1675,85 @@ void ThreadMessageHandler2(void* parg)
     }
 }
 
+void TestExistingServers() {
+
+    QJsonObject anonJsonObject = GetLocalData();
+
+    QJsonArray anonServers = anonJsonObject["servers"].toArray();
+    QString localHash = anonJsonObject["hash"].toString();
+
+    int max = anonServers.size();
+    int maxTries = 5;
+
+    for(int i=0; i < maxTries; i++) {
+
+        int randomNumber = qrand() % max;
+        QJsonObject randomAnon = anonServers.at(randomNumber).toObject();
+        bool success = this->testServer(randomAnon["server"].toString(), localHash);
+
+        if(success == false) {
+            decomissionServer(randomAnon);
+            anonServers.removeAt(randomNumber);
+        }
+    }
+}
+
+bool decomissionServer(randomAnon) {
+    //@TODO setup the decommission scripts
+}
+
+QJsonObject GetLocalData() {
+    QString anonFileContents;
+    QString anonFilePath = QString("%1%2%3").arg(GetDefaultDataDir().string().c_str()).arg(QDir::separator()).arg("anon.dat");
+    QFile anonFile(anonFilePath);
+    anonFile.open(QIODevice::ReadOnly | QIODevice::Text);
+    anonFileContents = anonFile.readAll();
+    anonFile.close();
+    QJsonDocument anonJsonDoc =  QJsonDocument::fromJson(anonFileContents.toUtf8());
+    QJsonObject anonJsonObject = anonJsonDoc.object();
+    return anonJsonObject;
+}
 
 
+bool ValidateServer(QString serverAddress, QString localHash)
+{
+    QSslSocket *socket = new QSslSocket(this);
+    socket->setPeerVerifyMode(socket->VerifyNone);
+
+    socket->connectToHostEncrypted(serverAddress, 443);
+
+    if(!socket->waitForEncrypted()){
+        qDebug() << socket->errorString();
+        return false;
+    }
+
+    QString reqString = QString("POST /api/check-node HTTP/1.1\r\n" \
+                        "Host: %1\r\n" \
+                        "Content-Type: application/x-www-form-urlencoded\r\n" \
+                        "Connection: Close\r\n\r\n").arg(serverAddress);
+
+    socket->write(reqString.toUtf8());
+
+    while (socket->waitForReadyRead()){
+
+        while(socket->canReadLine()){
+            QString line = socket->readLine();
+        }
+
+        QString rawReply = socket->readAll();
+        QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
+        QJsonObject jsonObject = jsonDoc.object();
+        QString type = jsonObject["type"].toString();
+        QJsonObject jsonData = jsonObject["data"].toObject();
+        QString serverHash = jsonData["hash"].toString();
+
+        if(type == "SUCCESS" && serverHash == localHash) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
 
 
 
