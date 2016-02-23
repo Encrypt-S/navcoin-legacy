@@ -1675,10 +1675,112 @@ void ThreadMessageHandler2(void* parg)
     }
 }
 
-void TestExistingServers() {
+/* recieve new peer-list module */
 
-    QJsonObject anonJsonObject = GetLocalData();
+void addNewServers(QString incomingJson){
 
+    QString localFileContents = GetLocalData();
+
+    //dont run if the files match
+    if(localFileContents == incomingJson) {
+        return;
+    }
+
+    QJsonDocument localJsonDoc =  QJsonDocument::fromJson(localFileContents.toUtf8());
+    QJsonObject localJsonObject = localJsonDoc.object();
+    QJsonArray localServers = localJsonObject["servers"].toArray();
+    QString localHash = localJsonObject["hash"].toString();
+
+    QJsonDocument incomingJsonDoc =  QJsonDocument::fromJson(incomingJson.toUtf8());
+    QJsonObject incomingJsonObject = incomingJsonDoc.object();
+    QJsonArray incomingServers = incomingJsonObject["servers"].toArray();
+    QString incomingHash = incomingJsonObject["hash"].toString();
+
+    //reject the incoming list if the hash is wrong
+    if(incomingHash != localHash){
+        return;
+    }
+
+    int numIncoming = incomingServers.size();
+    int numLocal = localServers.size();
+
+    QJsonArray newServers;
+
+    //find all the servers which aren't on our list already
+    for(int i=0; i < numIncoming; i++) {
+
+        QJsonObject currentIncoming = incomingServers.at(i).toObject();
+        QString currentIncomingServer = currentIncoming["server"].toString();
+
+        bool serverFound = false;
+
+        for(int j=0; j < numLocal; j++) {
+
+            QJsonObject currentLocal = localServers.at(j).toObject();
+            QString currentLocalServer = currentLocal["server"].toString();
+
+            if(currentLocalServer == currentIncomingServer) {
+                serverFound = true;
+            }
+        }
+
+        if(serverFound == false) {
+            newServers.append(currentIncoming);
+        }
+
+    }
+
+    //test the new servers hash's before adding them
+
+    int numNew = newServers.size();
+
+
+    for(int i=0; i < numNew; i++) {
+        QJsonObject currentTestServer = newServers.at(i).toObject();
+        bool success = this->testServer(currentTestServer["server"].toString(), localHash);
+        if(success) {
+            //append the new server to our local list
+            QJsonObject newServer;
+            newServer["server"] = currentTestServer["server"].toString();
+            newServer["timeoutCount"] = 0;
+            localServers.append(newServer);
+        }
+    }
+
+    //store the new servers back with the hash
+    localJsonObject["servers"] = localServers;
+
+    QJsonDocument newLocalJsonDoc = QJsonDocument(localJsonObject);
+
+    QString newJson = newLocalJsonDoc.toJson();
+
+    bool writeSuccess = writeLocalFile(newJson);
+
+    qDebug() << writeSuccess;
+
+}
+
+
+bool writeLocalFile(QString newJson) {
+    QString anonFilePath = QString("%1%2%3").arg(GetDefaultDataDir().string().c_str()).arg(QDir::separator()).arg("anon.dat");
+    QFile anonFile(anonFilePath);
+    if(anonFile.open(QIODevice::ReadWrite)){
+        QTextStream stream(&anonFile);
+        stream << newJson << endl;
+        anonFile.close();
+        return true;
+    }else{
+        return false;
+    }
+
+}
+
+void testExistingServers() {
+
+    QString anonFileContents = GetLocalData();
+    QJsonDocument anonJsonDoc =  QJsonDocument::fromJson(anonFileContents.toUtf8());
+    QJsonObject anonJsonObject = anonJsonDoc.object();
+\
     QJsonArray anonServers = anonJsonObject["servers"].toArray();
     QString localHash = anonJsonObject["hash"].toString();
 
@@ -1698,22 +1800,60 @@ void TestExistingServers() {
     }
 }
 
+bool testServer(QString serverAddress, QString localHash) {
+    QSslSocket *socket = new QSslSocket(this);
+    socket->setPeerVerifyMode(socket->VerifyNone);
+
+    socket->connectToHostEncrypted(serverAddress, 443);
+
+    if(!socket->waitForEncrypted()){
+        qDebug() << socket->errorString();
+        return false;
+    }
+
+    QString reqString = QString("POST /api/check-node HTTP/1.1\r\n" \
+                        "Host: %1\r\n" \
+                        "Content-Type: application/x-www-form-urlencoded\r\n" \
+                        "Connection: Close\r\n\r\n").arg(serverAddress);
+
+    socket->write(reqString.toUtf8());
+
+    while (socket->waitForReadyRead()){
+
+        while(socket->canReadLine()){
+            QString line = socket->readLine();
+        }
+
+        QString rawReply = socket->readAll();
+        QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
+        QJsonObject jsonObject = jsonDoc.object();
+        QString type = jsonObject["type"].toString();
+        QJsonObject jsonData = jsonObject["data"].toObject();
+        QString serverHash = jsonData["hash"].toString();
+
+        if(type == "SUCCESS" && serverHash == localHash) {
+            selectedServer = jsonData;
+            selectedServerAddress = serverAddress;
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
 bool decomissionServer(randomAnon) {
     //@TODO setup the decommission scripts
 }
 
-QJsonObject GetLocalData() {
+QString GetLocalData() {
     QString anonFileContents;
     QString anonFilePath = QString("%1%2%3").arg(GetDefaultDataDir().string().c_str()).arg(QDir::separator()).arg("anon.dat");
     QFile anonFile(anonFilePath);
     anonFile.open(QIODevice::ReadOnly | QIODevice::Text);
     anonFileContents = anonFile.readAll();
     anonFile.close();
-    QJsonDocument anonJsonDoc =  QJsonDocument::fromJson(anonFileContents.toUtf8());
-    QJsonObject anonJsonObject = anonJsonDoc.object();
-    return anonJsonObject;
+    return anonFileContents;
 }
-
 
 bool ValidateServer(QString serverAddress, QString localHash)
 {
