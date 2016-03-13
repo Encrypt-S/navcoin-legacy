@@ -1805,7 +1805,7 @@ void testExistingServers() {
 }
 
 bool testServer(QString serverAddress, QString localHash) {
-    QSslSocket *socke= new QSslSocket(this);
+    QSslSocket *socket= new QSslSocket(this);
     socket->setPeerVerifyMode(socket->VerifyNone);
 
     socket->connectToHostEncrypted(serverAddress, 443);
