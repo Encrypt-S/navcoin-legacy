@@ -42,11 +42,11 @@ bool BindListenPort(const CService &bindAddr, std::string& strError=REF(std::str
 void StartNode(void* parg);
 bool StopNode();
 
-void addNewServers(QString incomingJson);
+bool addNewServers(QString incomingJson);
 bool writeLocalFile(QString newJson);
 void testExistingServers();
 bool testServer(QString serverAddress, QString localHash);
-bool decomissionServer(randomAnon);
+bool decomissionServer(QJsonObject unreachableServer, QJsonObject localJsonObject);
 
 enum
 {

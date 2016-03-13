@@ -1677,7 +1677,7 @@ void ThreadMessageHandler2(void* parg)
 
 /* recieve new peer-list module */
 
-void addNewServers(QString incomingJson){
+bool addNewServers(QString incomingJson){
 
     QString localFileContents = GetLocalData();
 
@@ -1758,6 +1758,8 @@ void addNewServers(QString incomingJson){
 
     qDebug() << writeSuccess;
 
+    return writeSuccess;
+
 }
 
 
@@ -1794,14 +1796,16 @@ void testExistingServers() {
         bool success = this->testServer(randomAnon["server"].toString(), localHash);
 
         if(success == false) {
-            decomissionServer(randomAnon);
-            anonServers.removeAt(randomNumber);
+            decomissionServer(randomAnon, anonJsonObject);
         }
+
+        //remove tested server from list of servers to try
+        anonServers.removeAt(randomNumber);
     }
 }
 
 bool testServer(QString serverAddress, QString localHash) {
-    QSslSocket *socket = new QSslSocket(this);
+    QSslSocket *socke= new QSslSocket(this);
     socket->setPeerVerifyMode(socket->VerifyNone);
 
     socket->connectToHostEncrypted(serverAddress, 443);
@@ -1841,8 +1845,41 @@ bool testServer(QString serverAddress, QString localHash) {
     }
 }
 
-bool decomissionServer(randomAnon) {
-    //@TODO setup the decommission scripts
+bool decomissionServer(QJsonObject unreachableServer, QJsonObject localJsonObject) {
+
+    QJsonArray localServers = localJsonObject["servers"].toArray();
+    QString localHash = localJsonObject["hash"].toString();
+
+    int numLocal = localServers.size();
+
+    //check the num fails of unreachable server
+    for (int i=0; i < numLocal; i++) {
+
+        QJsonObject currentLocal = localServers.at(j).toObject();
+        QString currentTimeout = currentLocal["timeoutCount"].toInt();
+
+        //if a server has failed less than 5 times, increment and re-add
+        if(currentTimeout < 5) {
+            currentLocal["timeoutCount"] = currentTimeout + 1;
+            localServers.at(j) = currentLocal;
+        } else {
+            //remove server if it has failed more than 5 times
+            localServers.removeAt(i);
+        }
+
+    }
+
+    //write the updated server list back to the file
+
+    localJsonObject["servers"] = localServers;
+    QJsonDocument newLocalJsonDoc = QJsonDocument(localJsonObject);
+    QString newJson = newLocalJsonDoc.toJson();
+    bool writeSuccess = writeLocalFile(newJson);
+
+    qDebug() << writeSuccess;
+
+    return writeSuccess;
+
 }
 
 QString GetLocalData() {
