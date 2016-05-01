@@ -39,8 +39,6 @@ public:
     explicit WalletModel(CWallet *wallet, OptionsModel *optionsModel, QObject *parent = 0);
     ~WalletModel();
 
-    setAnonDetails(double min, double max, QString comment);
-
     enum StatusCode // Returned by sendCoins
     {
         OK,
@@ -154,11 +152,6 @@ private:
     void subscribeToCoreSignals();
     void unsubscribeFromCoreSignals();
     void checkBalanceChanged();
-
-    QString txComment;
-    double minAmount;
-    double maxAmount;
-
 
 public slots:
     /* Wallet status might have changed */
