@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'optionsdialog.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'optionsdialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.2. It"
+#error "This file was generated using the moc from 5.2.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,35 +20,34 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_OptionsDialog_t {
     QByteArrayData data[19];
-    char stringdata[315];
+    char stringdata[316];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_OptionsDialog_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData)) \
+    offsetof(qt_meta_stringdata_OptionsDialog_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
     )
 static const qt_meta_stringdata_OptionsDialog_t qt_meta_stringdata_OptionsDialog = {
     {
-QT_MOC_LITERAL(0, 0, 13), // "OptionsDialog"
-QT_MOC_LITERAL(1, 14, 12), // "proxyIpValid"
-QT_MOC_LITERAL(2, 27, 0), // ""
-QT_MOC_LITERAL(3, 28, 19), // "QValidatedLineEdit*"
-QT_MOC_LITERAL(4, 48, 6), // "object"
-QT_MOC_LITERAL(5, 55, 6), // "fValid"
-QT_MOC_LITERAL(6, 62, 17), // "enableApplyButton"
-QT_MOC_LITERAL(7, 80, 18), // "disableApplyButton"
-QT_MOC_LITERAL(8, 99, 17), // "enableSaveButtons"
-QT_MOC_LITERAL(9, 117, 18), // "disableSaveButtons"
-QT_MOC_LITERAL(10, 136, 18), // "setSaveButtonState"
-QT_MOC_LITERAL(11, 155, 6), // "fState"
-QT_MOC_LITERAL(12, 162, 19), // "on_okButton_clicked"
-QT_MOC_LITERAL(13, 182, 23), // "on_cancelButton_clicked"
-QT_MOC_LITERAL(14, 206, 22), // "on_applyButton_clicked"
-QT_MOC_LITERAL(15, 229, 24), // "showRestartWarning_Proxy"
-QT_MOC_LITERAL(16, 254, 23), // "showRestartWarning_Lang"
-QT_MOC_LITERAL(17, 278, 17), // "updateDisplayUnit"
-QT_MOC_LITERAL(18, 296, 18) // "handleProxyIpValid"
-
+QT_MOC_LITERAL(0, 0, 13),
+QT_MOC_LITERAL(1, 14, 12),
+QT_MOC_LITERAL(2, 27, 0),
+QT_MOC_LITERAL(3, 28, 19),
+QT_MOC_LITERAL(4, 48, 6),
+QT_MOC_LITERAL(5, 55, 6),
+QT_MOC_LITERAL(6, 62, 17),
+QT_MOC_LITERAL(7, 80, 18),
+QT_MOC_LITERAL(8, 99, 17),
+QT_MOC_LITERAL(9, 117, 18),
+QT_MOC_LITERAL(10, 136, 18),
+QT_MOC_LITERAL(11, 155, 6),
+QT_MOC_LITERAL(12, 162, 19),
+QT_MOC_LITERAL(13, 182, 23),
+QT_MOC_LITERAL(14, 206, 22),
+QT_MOC_LITERAL(15, 229, 24),
+QT_MOC_LITERAL(16, 254, 23),
+QT_MOC_LITERAL(17, 278, 17),
+QT_MOC_LITERAL(18, 296, 18)
     },
     "OptionsDialog\0proxyIpValid\0\0"
     "QValidatedLineEdit*\0object\0fValid\0"
@@ -58,7 +57,7 @@ QT_MOC_LITERAL(18, 296, 18) // "handleProxyIpValid"
     "on_cancelButton_clicked\0on_applyButton_clicked\0"
     "showRestartWarning_Proxy\0"
     "showRestartWarning_Lang\0updateDisplayUnit\0"
-    "handleProxyIpValid"
+    "handleProxyIpValid\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -76,21 +75,21 @@ static const uint qt_meta_data_OptionsDialog[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,   79,    2, 0x06 /* Public */,
+       1,    2,   79,    2, 0x06,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,   84,    2, 0x08 /* Private */,
-       7,    0,   85,    2, 0x08 /* Private */,
-       8,    0,   86,    2, 0x08 /* Private */,
-       9,    0,   87,    2, 0x08 /* Private */,
-      10,    1,   88,    2, 0x08 /* Private */,
-      12,    0,   91,    2, 0x08 /* Private */,
-      13,    0,   92,    2, 0x08 /* Private */,
-      14,    0,   93,    2, 0x08 /* Private */,
-      15,    0,   94,    2, 0x08 /* Private */,
-      16,    0,   95,    2, 0x08 /* Private */,
-      17,    0,   96,    2, 0x08 /* Private */,
-      18,    2,   97,    2, 0x08 /* Private */,
+       6,    0,   84,    2, 0x08,
+       7,    0,   85,    2, 0x08,
+       8,    0,   86,    2, 0x08,
+       9,    0,   87,    2, 0x08,
+      10,    1,   88,    2, 0x08,
+      12,    0,   91,    2, 0x08,
+      13,    0,   92,    2, 0x08,
+      14,    0,   93,    2, 0x08,
+      15,    0,   94,    2, 0x08,
+      16,    0,   95,    2, 0x08,
+      17,    0,   96,    2, 0x08,
+      18,    2,   97,    2, 0x08,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3, QMetaType::Bool,    4,    5,
@@ -146,7 +145,7 @@ void OptionsDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
 
 const QMetaObject OptionsDialog::staticMetaObject = {
     { &QDialog::staticMetaObject, qt_meta_stringdata_OptionsDialog.data,
-      qt_meta_data_OptionsDialog,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_OptionsDialog,  qt_static_metacall, 0, 0}
 };
 
 
@@ -157,7 +156,7 @@ const QMetaObject *OptionsDialog::metaObject() const
 
 void *OptionsDialog::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_OptionsDialog.stringdata))
         return static_cast<void*>(const_cast< OptionsDialog*>(this));
     return QDialog::qt_metacast(_clname);
@@ -183,7 +182,7 @@ int OptionsDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void OptionsDialog::proxyIpValid(QValidatedLineEdit * _t1, bool _t2)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_END_MOC_NAMESPACE

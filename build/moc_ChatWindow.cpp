@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ChatWindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'ChatWindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.2. It"
+#error "This file was generated using the moc from 5.2.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,50 +20,49 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ChatWindow_t {
     QByteArrayData data[34];
-    char stringdata[687];
+    char stringdata[688];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_ChatWindow_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData)) \
+    offsetof(qt_meta_stringdata_ChatWindow_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
     )
 static const qt_meta_stringdata_ChatWindow_t qt_meta_stringdata_ChatWindow = {
     {
-QT_MOC_LITERAL(0, 0, 10), // "ChatWindow"
-QT_MOC_LITERAL(1, 11, 22), // "on_loginButton_clicked"
-QT_MOC_LITERAL(2, 34, 0), // ""
-QT_MOC_LITERAL(3, 35, 20), // "on_sayButton_clicked"
-QT_MOC_LITERAL(4, 56, 9), // "readyRead"
-QT_MOC_LITERAL(5, 66, 9), // "connected"
-QT_MOC_LITERAL(6, 76, 12), // "disconnected"
-QT_MOC_LITERAL(7, 89, 23), // "on_logoutButton_clicked"
-QT_MOC_LITERAL(8, 113, 28), // "on_sayLineEdit_returnPressed"
-QT_MOC_LITERAL(9, 142, 32), // "on_roomTextBrowser_anchorClicked"
-QT_MOC_LITERAL(10, 175, 3), // "url"
-QT_MOC_LITERAL(11, 179, 35), // "on_userListWidget_itemDoubleC..."
-QT_MOC_LITERAL(12, 215, 16), // "QListWidgetItem*"
-QT_MOC_LITERAL(13, 232, 4), // "item"
-QT_MOC_LITERAL(14, 237, 30), // "on_tabWidget_tabCloseRequested"
-QT_MOC_LITERAL(15, 268, 5), // "index"
-QT_MOC_LITERAL(16, 274, 26), // "on_tabWidget_tabBarClicked"
-QT_MOC_LITERAL(17, 301, 25), // "on_registerButton_clicked"
-QT_MOC_LITERAL(18, 327, 23), // "on_cancelButton_clicked"
-QT_MOC_LITERAL(19, 351, 31), // "on_submitRegisterButton_clicked"
-QT_MOC_LITERAL(20, 383, 15), // "registerRequest"
-QT_MOC_LITERAL(21, 399, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(22, 414, 5), // "reply"
-QT_MOC_LITERAL(23, 420, 20), // "recoveryEmailRequest"
-QT_MOC_LITERAL(24, 441, 15), // "recoveryRequest"
-QT_MOC_LITERAL(25, 457, 12), // "loginRequest"
-QT_MOC_LITERAL(26, 470, 15), // "transferRequest"
-QT_MOC_LITERAL(27, 486, 27), // "on_transferUsername_clicked"
-QT_MOC_LITERAL(28, 514, 26), // "on_recoverUsername_clicked"
-QT_MOC_LITERAL(29, 541, 28), // "on_sendRecoveryEmail_clicked"
-QT_MOC_LITERAL(30, 570, 25), // "on_cancelRecovery_clicked"
-QT_MOC_LITERAL(31, 596, 33), // "on_submitTransferUsername_cli..."
-QT_MOC_LITERAL(32, 630, 25), // "on_transferCancel_clicked"
-QT_MOC_LITERAL(33, 656, 30) // "on_submitRecoveryToken_clicked"
-
+QT_MOC_LITERAL(0, 0, 10),
+QT_MOC_LITERAL(1, 11, 22),
+QT_MOC_LITERAL(2, 34, 0),
+QT_MOC_LITERAL(3, 35, 20),
+QT_MOC_LITERAL(4, 56, 9),
+QT_MOC_LITERAL(5, 66, 9),
+QT_MOC_LITERAL(6, 76, 12),
+QT_MOC_LITERAL(7, 89, 23),
+QT_MOC_LITERAL(8, 113, 28),
+QT_MOC_LITERAL(9, 142, 32),
+QT_MOC_LITERAL(10, 175, 3),
+QT_MOC_LITERAL(11, 179, 35),
+QT_MOC_LITERAL(12, 215, 16),
+QT_MOC_LITERAL(13, 232, 4),
+QT_MOC_LITERAL(14, 237, 30),
+QT_MOC_LITERAL(15, 268, 5),
+QT_MOC_LITERAL(16, 274, 26),
+QT_MOC_LITERAL(17, 301, 25),
+QT_MOC_LITERAL(18, 327, 23),
+QT_MOC_LITERAL(19, 351, 31),
+QT_MOC_LITERAL(20, 383, 15),
+QT_MOC_LITERAL(21, 399, 14),
+QT_MOC_LITERAL(22, 414, 5),
+QT_MOC_LITERAL(23, 420, 20),
+QT_MOC_LITERAL(24, 441, 15),
+QT_MOC_LITERAL(25, 457, 12),
+QT_MOC_LITERAL(26, 470, 15),
+QT_MOC_LITERAL(27, 486, 27),
+QT_MOC_LITERAL(28, 514, 26),
+QT_MOC_LITERAL(29, 541, 28),
+QT_MOC_LITERAL(30, 570, 25),
+QT_MOC_LITERAL(31, 596, 33),
+QT_MOC_LITERAL(32, 630, 25),
+QT_MOC_LITERAL(33, 656, 30)
     },
     "ChatWindow\0on_loginButton_clicked\0\0"
     "on_sayButton_clicked\0readyRead\0connected\0"
@@ -86,7 +85,7 @@ QT_MOC_LITERAL(33, 656, 30) // "on_submitRecoveryToken_clicked"
     "on_cancelRecovery_clicked\0"
     "on_submitTransferUsername_clicked\0"
     "on_transferCancel_clicked\0"
-    "on_submitRecoveryToken_clicked"
+    "on_submitRecoveryToken_clicked\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -104,32 +103,32 @@ static const uint qt_meta_data_ChatWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  144,    2, 0x08 /* Private */,
-       3,    0,  145,    2, 0x08 /* Private */,
-       4,    0,  146,    2, 0x08 /* Private */,
-       5,    0,  147,    2, 0x08 /* Private */,
-       6,    0,  148,    2, 0x08 /* Private */,
-       7,    0,  149,    2, 0x08 /* Private */,
-       8,    0,  150,    2, 0x08 /* Private */,
-       9,    1,  151,    2, 0x08 /* Private */,
-      11,    1,  154,    2, 0x08 /* Private */,
-      14,    1,  157,    2, 0x08 /* Private */,
-      16,    1,  160,    2, 0x08 /* Private */,
-      17,    0,  163,    2, 0x08 /* Private */,
-      18,    0,  164,    2, 0x08 /* Private */,
-      19,    0,  165,    2, 0x08 /* Private */,
-      20,    1,  166,    2, 0x08 /* Private */,
-      23,    1,  169,    2, 0x08 /* Private */,
-      24,    1,  172,    2, 0x08 /* Private */,
-      25,    1,  175,    2, 0x08 /* Private */,
-      26,    1,  178,    2, 0x08 /* Private */,
-      27,    0,  181,    2, 0x08 /* Private */,
-      28,    0,  182,    2, 0x08 /* Private */,
-      29,    0,  183,    2, 0x08 /* Private */,
-      30,    0,  184,    2, 0x08 /* Private */,
-      31,    0,  185,    2, 0x08 /* Private */,
-      32,    0,  186,    2, 0x08 /* Private */,
-      33,    0,  187,    2, 0x08 /* Private */,
+       1,    0,  144,    2, 0x08,
+       3,    0,  145,    2, 0x08,
+       4,    0,  146,    2, 0x08,
+       5,    0,  147,    2, 0x08,
+       6,    0,  148,    2, 0x08,
+       7,    0,  149,    2, 0x08,
+       8,    0,  150,    2, 0x08,
+       9,    1,  151,    2, 0x08,
+      11,    1,  154,    2, 0x08,
+      14,    1,  157,    2, 0x08,
+      16,    1,  160,    2, 0x08,
+      17,    0,  163,    2, 0x08,
+      18,    0,  164,    2, 0x08,
+      19,    0,  165,    2, 0x08,
+      20,    1,  166,    2, 0x08,
+      23,    1,  169,    2, 0x08,
+      24,    1,  172,    2, 0x08,
+      25,    1,  175,    2, 0x08,
+      26,    1,  178,    2, 0x08,
+      27,    0,  181,    2, 0x08,
+      28,    0,  182,    2, 0x08,
+      29,    0,  183,    2, 0x08,
+      30,    0,  184,    2, 0x08,
+      31,    0,  185,    2, 0x08,
+      32,    0,  186,    2, 0x08,
+      33,    0,  187,    2, 0x08,
 
  // slots: parameters
     QMetaType::Void,
@@ -239,7 +238,7 @@ void ChatWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
 
 const QMetaObject ChatWindow::staticMetaObject = {
     { &QMainWindow::staticMetaObject, qt_meta_stringdata_ChatWindow.data,
-      qt_meta_data_ChatWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_ChatWindow,  qt_static_metacall, 0, 0}
 };
 
 
@@ -250,7 +249,7 @@ const QMetaObject *ChatWindow::metaObject() const
 
 void *ChatWindow::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_ChatWindow.stringdata))
         return static_cast<void*>(const_cast< ChatWindow*>(this));
     if (!strcmp(_clname, "Ui::ChatWindow"))

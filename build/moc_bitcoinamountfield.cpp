@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'bitcoinamountfield.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'bitcoinamountfield.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.2. It"
+#error "This file was generated using the moc from 5.2.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,25 +20,24 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_BitcoinAmountField_t {
     QByteArrayData data[6];
-    char stringdata[54];
+    char stringdata[55];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_BitcoinAmountField_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData)) \
+    offsetof(qt_meta_stringdata_BitcoinAmountField_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
     )
 static const qt_meta_stringdata_BitcoinAmountField_t qt_meta_stringdata_BitcoinAmountField = {
     {
-QT_MOC_LITERAL(0, 0, 18), // "BitcoinAmountField"
-QT_MOC_LITERAL(1, 19, 11), // "textChanged"
-QT_MOC_LITERAL(2, 31, 0), // ""
-QT_MOC_LITERAL(3, 32, 11), // "unitChanged"
-QT_MOC_LITERAL(4, 44, 3), // "idx"
-QT_MOC_LITERAL(5, 48, 5) // "value"
-
+QT_MOC_LITERAL(0, 0, 18),
+QT_MOC_LITERAL(1, 19, 11),
+QT_MOC_LITERAL(2, 31, 0),
+QT_MOC_LITERAL(3, 32, 11),
+QT_MOC_LITERAL(4, 44, 3),
+QT_MOC_LITERAL(5, 48, 5)
     },
     "BitcoinAmountField\0textChanged\0\0"
-    "unitChanged\0idx\0value"
+    "unitChanged\0idx\0value\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,10 +55,10 @@ static const uint qt_meta_data_BitcoinAmountField[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   24,    2, 0x06 /* Public */,
+       1,    0,   24,    2, 0x06,
 
  // slots: name, argc, parameters, tag, flags
-       3,    1,   25,    2, 0x08 /* Private */,
+       3,    1,   25,    2, 0x08,
 
  // signals: parameters
     QMetaType::Void,
@@ -99,7 +98,7 @@ void BitcoinAmountField::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
 
 const QMetaObject BitcoinAmountField::staticMetaObject = {
     { &QWidget::staticMetaObject, qt_meta_stringdata_BitcoinAmountField.data,
-      qt_meta_data_BitcoinAmountField,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_BitcoinAmountField,  qt_static_metacall, 0, 0}
 };
 
 
@@ -110,7 +109,7 @@ const QMetaObject *BitcoinAmountField::metaObject() const
 
 void *BitcoinAmountField::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_BitcoinAmountField.stringdata))
         return static_cast<void*>(const_cast< BitcoinAmountField*>(this));
     return QWidget::qt_metacast(_clname);
@@ -135,14 +134,12 @@ int BitcoinAmountField::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         void *_v = _a[0];
         switch (_id) {
         case 0: *reinterpret_cast< qint64*>(_v) = value(); break;
-        default: break;
         }
         _id -= 1;
     } else if (_c == QMetaObject::WriteProperty) {
         void *_v = _a[0];
         switch (_id) {
         case 0: setValue(*reinterpret_cast< qint64*>(_v)); break;
-        default: break;
         }
         _id -= 1;
     } else if (_c == QMetaObject::ResetProperty) {
@@ -169,6 +166,6 @@ int BitcoinAmountField::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void BitcoinAmountField::textChanged()
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 0, 0);
 }
 QT_END_MOC_NAMESPACE

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'editaddressdialog.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'editaddressdialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.2. It"
+#error "This file was generated using the moc from 5.2.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,21 +20,20 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_EditAddressDialog_t {
     QByteArrayData data[3];
-    char stringdata[26];
+    char stringdata[27];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_EditAddressDialog_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData)) \
+    offsetof(qt_meta_stringdata_EditAddressDialog_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
     )
 static const qt_meta_stringdata_EditAddressDialog_t qt_meta_stringdata_EditAddressDialog = {
     {
-QT_MOC_LITERAL(0, 0, 17), // "EditAddressDialog"
-QT_MOC_LITERAL(1, 18, 6), // "accept"
-QT_MOC_LITERAL(2, 25, 0) // ""
-
+QT_MOC_LITERAL(0, 0, 17),
+QT_MOC_LITERAL(1, 18, 6),
+QT_MOC_LITERAL(2, 25, 0)
     },
-    "EditAddressDialog\0accept\0"
+    "EditAddressDialog\0accept\0\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -52,7 +51,7 @@ static const uint qt_meta_data_EditAddressDialog[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   19,    2, 0x0a /* Public */,
+       1,    0,   19,    2, 0x0a,
 
  // slots: parameters
     QMetaType::Void,
@@ -74,7 +73,7 @@ void EditAddressDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
 
 const QMetaObject EditAddressDialog::staticMetaObject = {
     { &QDialog::staticMetaObject, qt_meta_stringdata_EditAddressDialog.data,
-      qt_meta_data_EditAddressDialog,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_EditAddressDialog,  qt_static_metacall, 0, 0}
 };
 
 
@@ -85,7 +84,7 @@ const QMetaObject *EditAddressDialog::metaObject() const
 
 void *EditAddressDialog::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_EditAddressDialog.stringdata))
         return static_cast<void*>(const_cast< EditAddressDialog*>(this));
     return QDialog::qt_metacast(_clname);

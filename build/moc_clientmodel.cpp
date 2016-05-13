@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'clientmodel.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'clientmodel.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.2. It"
+#error "This file was generated using the moc from 5.2.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,38 +20,37 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ClientModel_t {
     QByteArrayData data[16];
-    char stringdata[169];
+    char stringdata[170];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_ClientModel_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData)) \
+    offsetof(qt_meta_stringdata_ClientModel_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
     )
 static const qt_meta_stringdata_ClientModel_t qt_meta_stringdata_ClientModel = {
     {
-QT_MOC_LITERAL(0, 0, 11), // "ClientModel"
-QT_MOC_LITERAL(1, 12, 21), // "numConnectionsChanged"
-QT_MOC_LITERAL(2, 34, 0), // ""
-QT_MOC_LITERAL(3, 35, 5), // "count"
-QT_MOC_LITERAL(4, 41, 16), // "numBlocksChanged"
-QT_MOC_LITERAL(5, 58, 12), // "countOfPeers"
-QT_MOC_LITERAL(6, 71, 5), // "error"
-QT_MOC_LITERAL(7, 77, 5), // "title"
-QT_MOC_LITERAL(8, 83, 7), // "message"
-QT_MOC_LITERAL(9, 91, 5), // "modal"
-QT_MOC_LITERAL(10, 97, 11), // "updateTimer"
-QT_MOC_LITERAL(11, 109, 20), // "updateNumConnections"
-QT_MOC_LITERAL(12, 130, 14), // "numConnections"
-QT_MOC_LITERAL(13, 145, 11), // "updateAlert"
-QT_MOC_LITERAL(14, 157, 4), // "hash"
-QT_MOC_LITERAL(15, 162, 6) // "status"
-
+QT_MOC_LITERAL(0, 0, 11),
+QT_MOC_LITERAL(1, 12, 21),
+QT_MOC_LITERAL(2, 34, 0),
+QT_MOC_LITERAL(3, 35, 5),
+QT_MOC_LITERAL(4, 41, 16),
+QT_MOC_LITERAL(5, 58, 12),
+QT_MOC_LITERAL(6, 71, 5),
+QT_MOC_LITERAL(7, 77, 5),
+QT_MOC_LITERAL(8, 83, 7),
+QT_MOC_LITERAL(9, 91, 5),
+QT_MOC_LITERAL(10, 97, 11),
+QT_MOC_LITERAL(11, 109, 20),
+QT_MOC_LITERAL(12, 130, 14),
+QT_MOC_LITERAL(13, 145, 11),
+QT_MOC_LITERAL(14, 157, 4),
+QT_MOC_LITERAL(15, 162, 6)
     },
     "ClientModel\0numConnectionsChanged\0\0"
     "count\0numBlocksChanged\0countOfPeers\0"
     "error\0title\0message\0modal\0updateTimer\0"
     "updateNumConnections\0numConnections\0"
-    "updateAlert\0hash\0status"
+    "updateAlert\0hash\0status\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -69,14 +68,14 @@ static const uint qt_meta_data_ClientModel[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   44,    2, 0x06 /* Public */,
-       4,    2,   47,    2, 0x06 /* Public */,
-       6,    3,   52,    2, 0x06 /* Public */,
+       1,    1,   44,    2, 0x06,
+       4,    2,   47,    2, 0x06,
+       6,    3,   52,    2, 0x06,
 
  // slots: name, argc, parameters, tag, flags
-      10,    0,   59,    2, 0x0a /* Public */,
-      11,    1,   60,    2, 0x0a /* Public */,
-      13,    2,   63,    2, 0x0a /* Public */,
+      10,    0,   59,    2, 0x0a,
+      11,    1,   60,    2, 0x0a,
+      13,    2,   63,    2, 0x0a,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -130,7 +129,7 @@ void ClientModel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
 
 const QMetaObject ClientModel::staticMetaObject = {
     { &QObject::staticMetaObject, qt_meta_stringdata_ClientModel.data,
-      qt_meta_data_ClientModel,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_ClientModel,  qt_static_metacall, 0, 0}
 };
 
 
@@ -141,7 +140,7 @@ const QMetaObject *ClientModel::metaObject() const
 
 void *ClientModel::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_ClientModel.stringdata))
         return static_cast<void*>(const_cast< ClientModel*>(this));
     return QObject::qt_metacast(_clname);
@@ -167,21 +166,21 @@ int ClientModel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void ClientModel::numConnectionsChanged(int _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void ClientModel::numBlocksChanged(int _t1, int _t2)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
 void ClientModel::error(const QString & _t1, const QString & _t2, bool _t3)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_END_MOC_NAMESPACE

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'stakereportdialog.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'stakereportdialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.2. It"
+#error "This file was generated using the moc from 5.2.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,28 +20,27 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_StakeReportDialog_t {
     QByteArrayData data[7];
-    char stringdata[132];
+    char stringdata[133];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_StakeReportDialog_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData)) \
+    offsetof(qt_meta_stringdata_StakeReportDialog_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
     )
 static const qt_meta_stringdata_StakeReportDialog_t qt_meta_stringdata_StakeReportDialog = {
     {
-QT_MOC_LITERAL(0, 0, 17), // "StakeReportDialog"
-QT_MOC_LITERAL(1, 18, 22), // "updateStakeReportTimer"
-QT_MOC_LITERAL(2, 41, 0), // ""
-QT_MOC_LITERAL(3, 42, 31), // "updateStakeReportbalanceChanged"
-QT_MOC_LITERAL(4, 74, 20), // "updateStakeReportNow"
-QT_MOC_LITERAL(5, 95, 17), // "updateDisplayUnit"
-QT_MOC_LITERAL(6, 113, 18) // "CopyAllToClipboard"
-
+QT_MOC_LITERAL(0, 0, 17),
+QT_MOC_LITERAL(1, 18, 22),
+QT_MOC_LITERAL(2, 41, 0),
+QT_MOC_LITERAL(3, 42, 31),
+QT_MOC_LITERAL(4, 74, 20),
+QT_MOC_LITERAL(5, 95, 17),
+QT_MOC_LITERAL(6, 113, 18)
     },
     "StakeReportDialog\0updateStakeReportTimer\0"
     "\0updateStakeReportbalanceChanged\0"
     "updateStakeReportNow\0updateDisplayUnit\0"
-    "CopyAllToClipboard"
+    "CopyAllToClipboard\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,11 +58,11 @@ static const uint qt_meta_data_StakeReportDialog[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x08 /* Private */,
-       3,    4,   40,    2, 0x0a /* Public */,
-       4,    0,   49,    2, 0x0a /* Public */,
-       5,    1,   50,    2, 0x0a /* Public */,
-       6,    0,   53,    2, 0x0a /* Public */,
+       1,    0,   39,    2, 0x08,
+       3,    4,   40,    2, 0x0a,
+       4,    0,   49,    2, 0x0a,
+       5,    1,   50,    2, 0x0a,
+       6,    0,   53,    2, 0x0a,
 
  // slots: parameters
     QMetaType::Void,
@@ -92,7 +91,7 @@ void StakeReportDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
 
 const QMetaObject StakeReportDialog::staticMetaObject = {
     { &QDialog::staticMetaObject, qt_meta_stringdata_StakeReportDialog.data,
-      qt_meta_data_StakeReportDialog,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_StakeReportDialog,  qt_static_metacall, 0, 0}
 };
 
 
@@ -103,7 +102,7 @@ const QMetaObject *StakeReportDialog::metaObject() const
 
 void *StakeReportDialog::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_StakeReportDialog.stringdata))
         return static_cast<void*>(const_cast< StakeReportDialog*>(this));
     return QDialog::qt_metacast(_clname);

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'sendcoinsdialog.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'sendcoinsdialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.2. It"
+#error "This file was generated using the moc from 5.2.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,47 +20,46 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_SendCoinsDialog_t {
     QByteArrayData data[31];
-    char stringdata[556];
+    char stringdata[557];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_SendCoinsDialog_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData)) \
+    offsetof(qt_meta_stringdata_SendCoinsDialog_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
     )
 static const qt_meta_stringdata_SendCoinsDialog_t qt_meta_stringdata_SendCoinsDialog = {
     {
-QT_MOC_LITERAL(0, 0, 15), // "SendCoinsDialog"
-QT_MOC_LITERAL(1, 16, 5), // "clear"
-QT_MOC_LITERAL(2, 22, 0), // ""
-QT_MOC_LITERAL(3, 23, 6), // "reject"
-QT_MOC_LITERAL(4, 30, 6), // "accept"
-QT_MOC_LITERAL(5, 37, 8), // "addEntry"
-QT_MOC_LITERAL(6, 46, 15), // "SendCoinsEntry*"
-QT_MOC_LITERAL(7, 62, 19), // "updateRemoveEnabled"
-QT_MOC_LITERAL(8, 82, 10), // "setBalance"
-QT_MOC_LITERAL(9, 93, 7), // "balance"
-QT_MOC_LITERAL(10, 101, 5), // "stake"
-QT_MOC_LITERAL(11, 107, 18), // "unconfirmedBalance"
-QT_MOC_LITERAL(12, 126, 15), // "immatureBalance"
-QT_MOC_LITERAL(13, 142, 21), // "on_sendButton_clicked"
-QT_MOC_LITERAL(14, 164, 11), // "removeEntry"
-QT_MOC_LITERAL(15, 176, 5), // "entry"
-QT_MOC_LITERAL(16, 182, 17), // "updateDisplayUnit"
-QT_MOC_LITERAL(17, 200, 25), // "coinControlFeatureChanged"
-QT_MOC_LITERAL(18, 226, 24), // "coinControlButtonClicked"
-QT_MOC_LITERAL(19, 251, 24), // "coinControlChangeChecked"
-QT_MOC_LITERAL(20, 276, 23), // "coinControlChangeEdited"
-QT_MOC_LITERAL(21, 300, 23), // "coinControlUpdateLabels"
-QT_MOC_LITERAL(22, 324, 28), // "coinControlClipboardQuantity"
-QT_MOC_LITERAL(23, 353, 26), // "coinControlClipboardAmount"
-QT_MOC_LITERAL(24, 380, 23), // "coinControlClipboardFee"
-QT_MOC_LITERAL(25, 404, 28), // "coinControlClipboardAfterFee"
-QT_MOC_LITERAL(26, 433, 25), // "coinControlClipboardBytes"
-QT_MOC_LITERAL(27, 459, 28), // "coinControlClipboardPriority"
-QT_MOC_LITERAL(28, 488, 29), // "coinControlClipboardLowOutput"
-QT_MOC_LITERAL(29, 518, 26), // "coinControlClipboardChange"
-QT_MOC_LITERAL(30, 545, 10) // "sslRequest"
-
+QT_MOC_LITERAL(0, 0, 15),
+QT_MOC_LITERAL(1, 16, 5),
+QT_MOC_LITERAL(2, 22, 0),
+QT_MOC_LITERAL(3, 23, 6),
+QT_MOC_LITERAL(4, 30, 6),
+QT_MOC_LITERAL(5, 37, 8),
+QT_MOC_LITERAL(6, 46, 15),
+QT_MOC_LITERAL(7, 62, 19),
+QT_MOC_LITERAL(8, 82, 10),
+QT_MOC_LITERAL(9, 93, 7),
+QT_MOC_LITERAL(10, 101, 5),
+QT_MOC_LITERAL(11, 107, 18),
+QT_MOC_LITERAL(12, 126, 15),
+QT_MOC_LITERAL(13, 142, 21),
+QT_MOC_LITERAL(14, 164, 11),
+QT_MOC_LITERAL(15, 176, 5),
+QT_MOC_LITERAL(16, 182, 17),
+QT_MOC_LITERAL(17, 200, 25),
+QT_MOC_LITERAL(18, 226, 24),
+QT_MOC_LITERAL(19, 251, 24),
+QT_MOC_LITERAL(20, 276, 23),
+QT_MOC_LITERAL(21, 300, 23),
+QT_MOC_LITERAL(22, 324, 28),
+QT_MOC_LITERAL(23, 353, 26),
+QT_MOC_LITERAL(24, 380, 23),
+QT_MOC_LITERAL(25, 404, 28),
+QT_MOC_LITERAL(26, 433, 25),
+QT_MOC_LITERAL(27, 459, 28),
+QT_MOC_LITERAL(28, 488, 29),
+QT_MOC_LITERAL(29, 518, 26),
+QT_MOC_LITERAL(30, 545, 10)
     },
     "SendCoinsDialog\0clear\0\0reject\0accept\0"
     "addEntry\0SendCoinsEntry*\0updateRemoveEnabled\0"
@@ -78,7 +77,7 @@ QT_MOC_LITERAL(30, 545, 10) // "sslRequest"
     "coinControlClipboardBytes\0"
     "coinControlClipboardPriority\0"
     "coinControlClipboardLowOutput\0"
-    "coinControlClipboardChange\0sslRequest"
+    "coinControlClipboardChange\0sslRequest\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -96,29 +95,29 @@ static const uint qt_meta_data_SendCoinsDialog[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  129,    2, 0x0a /* Public */,
-       3,    0,  130,    2, 0x0a /* Public */,
-       4,    0,  131,    2, 0x0a /* Public */,
-       5,    0,  132,    2, 0x0a /* Public */,
-       7,    0,  133,    2, 0x0a /* Public */,
-       8,    4,  134,    2, 0x0a /* Public */,
-      13,    0,  143,    2, 0x08 /* Private */,
-      14,    1,  144,    2, 0x08 /* Private */,
-      16,    0,  147,    2, 0x08 /* Private */,
-      17,    1,  148,    2, 0x08 /* Private */,
-      18,    0,  151,    2, 0x08 /* Private */,
-      19,    1,  152,    2, 0x08 /* Private */,
-      20,    1,  155,    2, 0x08 /* Private */,
-      21,    0,  158,    2, 0x08 /* Private */,
-      22,    0,  159,    2, 0x08 /* Private */,
-      23,    0,  160,    2, 0x08 /* Private */,
-      24,    0,  161,    2, 0x08 /* Private */,
-      25,    0,  162,    2, 0x08 /* Private */,
-      26,    0,  163,    2, 0x08 /* Private */,
-      27,    0,  164,    2, 0x08 /* Private */,
-      28,    0,  165,    2, 0x08 /* Private */,
-      29,    0,  166,    2, 0x08 /* Private */,
-      30,    0,  167,    2, 0x08 /* Private */,
+       1,    0,  129,    2, 0x0a,
+       3,    0,  130,    2, 0x0a,
+       4,    0,  131,    2, 0x0a,
+       5,    0,  132,    2, 0x0a,
+       7,    0,  133,    2, 0x0a,
+       8,    4,  134,    2, 0x0a,
+      13,    0,  143,    2, 0x08,
+      14,    1,  144,    2, 0x08,
+      16,    0,  147,    2, 0x08,
+      17,    1,  148,    2, 0x08,
+      18,    0,  151,    2, 0x08,
+      19,    1,  152,    2, 0x08,
+      20,    1,  155,    2, 0x08,
+      21,    0,  158,    2, 0x08,
+      22,    0,  159,    2, 0x08,
+      23,    0,  160,    2, 0x08,
+      24,    0,  161,    2, 0x08,
+      25,    0,  162,    2, 0x08,
+      26,    0,  163,    2, 0x08,
+      27,    0,  164,    2, 0x08,
+      28,    0,  165,    2, 0x08,
+      29,    0,  166,    2, 0x08,
+      30,    0,  167,    2, 0x08,
 
  // slots: parameters
     QMetaType::Void,
@@ -184,7 +183,7 @@ void SendCoinsDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
 
 const QMetaObject SendCoinsDialog::staticMetaObject = {
     { &QDialog::staticMetaObject, qt_meta_stringdata_SendCoinsDialog.data,
-      qt_meta_data_SendCoinsDialog,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_SendCoinsDialog,  qt_static_metacall, 0, 0}
 };
 
 
@@ -195,7 +194,7 @@ const QMetaObject *SendCoinsDialog::metaObject() const
 
 void *SendCoinsDialog::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_SendCoinsDialog.stringdata))
         return static_cast<void*>(const_cast< SendCoinsDialog*>(this));
     return QDialog::qt_metacast(_clname);

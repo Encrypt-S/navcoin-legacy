@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'server.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'server.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.2. It"
+#error "This file was generated using the moc from 5.2.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,44 +20,43 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Server_t {
     QByteArrayData data[21];
-    char stringdata[195];
+    char stringdata[196];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Server_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData)) \
+    offsetof(qt_meta_stringdata_Server_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
     )
 static const qt_meta_stringdata_Server_t qt_meta_stringdata_Server = {
     {
-QT_MOC_LITERAL(0, 0, 6), // "Server"
-QT_MOC_LITERAL(1, 7, 13), // "pseudoChanged"
-QT_MOC_LITERAL(2, 21, 0), // ""
-QT_MOC_LITERAL(3, 22, 9), // "newPseudo"
-QT_MOC_LITERAL(4, 32, 7), // "joinTab"
-QT_MOC_LITERAL(5, 40, 9), // "tabJoined"
-QT_MOC_LITERAL(6, 50, 10), // "readServer"
-QT_MOC_LITERAL(7, 61, 11), // "errorSocket"
-QT_MOC_LITERAL(8, 73, 28), // "QAbstractSocket::SocketError"
-QT_MOC_LITERAL(9, 102, 9), // "connected"
-QT_MOC_LITERAL(10, 112, 5), // "joins"
-QT_MOC_LITERAL(11, 118, 8), // "sendData"
-QT_MOC_LITERAL(12, 127, 3), // "txt"
-QT_MOC_LITERAL(13, 131, 4), // "join"
-QT_MOC_LITERAL(14, 136, 4), // "chan"
-QT_MOC_LITERAL(15, 141, 5), // "leave"
-QT_MOC_LITERAL(16, 147, 6), // "ecrire"
-QT_MOC_LITERAL(17, 154, 8), // "destChan"
-QT_MOC_LITERAL(18, 163, 7), // "msgTray"
-QT_MOC_LITERAL(19, 171, 15), // "updateUsersList"
-QT_MOC_LITERAL(20, 187, 7) // "message"
-
+QT_MOC_LITERAL(0, 0, 6),
+QT_MOC_LITERAL(1, 7, 13),
+QT_MOC_LITERAL(2, 21, 0),
+QT_MOC_LITERAL(3, 22, 9),
+QT_MOC_LITERAL(4, 32, 7),
+QT_MOC_LITERAL(5, 40, 9),
+QT_MOC_LITERAL(6, 50, 10),
+QT_MOC_LITERAL(7, 61, 11),
+QT_MOC_LITERAL(8, 73, 28),
+QT_MOC_LITERAL(9, 102, 9),
+QT_MOC_LITERAL(10, 112, 5),
+QT_MOC_LITERAL(11, 118, 8),
+QT_MOC_LITERAL(12, 127, 3),
+QT_MOC_LITERAL(13, 131, 4),
+QT_MOC_LITERAL(14, 136, 4),
+QT_MOC_LITERAL(15, 141, 5),
+QT_MOC_LITERAL(16, 147, 6),
+QT_MOC_LITERAL(17, 154, 8),
+QT_MOC_LITERAL(18, 163, 7),
+QT_MOC_LITERAL(19, 171, 15),
+QT_MOC_LITERAL(20, 187, 7)
     },
     "Server\0pseudoChanged\0\0newPseudo\0joinTab\0"
     "tabJoined\0readServer\0errorSocket\0"
     "QAbstractSocket::SocketError\0connected\0"
     "joins\0sendData\0txt\0join\0chan\0leave\0"
     "ecrire\0destChan\0msgTray\0updateUsersList\0"
-    "message"
+    "message\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -75,24 +74,24 @@ static const uint qt_meta_data_Server[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   94,    2, 0x06 /* Public */,
-       4,    0,   97,    2, 0x06 /* Public */,
-       5,    0,   98,    2, 0x06 /* Public */,
+       1,    1,   94,    2, 0x06,
+       4,    0,   97,    2, 0x06,
+       5,    0,   98,    2, 0x06,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,   99,    2, 0x0a /* Public */,
-       7,    1,  100,    2, 0x0a /* Public */,
-       9,    0,  103,    2, 0x0a /* Public */,
-      10,    0,  104,    2, 0x0a /* Public */,
-      11,    1,  105,    2, 0x0a /* Public */,
-      13,    1,  108,    2, 0x0a /* Public */,
-      15,    1,  111,    2, 0x0a /* Public */,
-      16,    3,  114,    2, 0x0a /* Public */,
-      16,    2,  121,    2, 0x2a /* Public | MethodCloned */,
-      16,    1,  126,    2, 0x2a /* Public | MethodCloned */,
-      19,    2,  129,    2, 0x0a /* Public */,
-      19,    1,  134,    2, 0x2a /* Public | MethodCloned */,
-      19,    0,  137,    2, 0x2a /* Public | MethodCloned */,
+       6,    0,   99,    2, 0x0a,
+       7,    1,  100,    2, 0x0a,
+       9,    0,  103,    2, 0x0a,
+      10,    0,  104,    2, 0x0a,
+      11,    1,  105,    2, 0x0a,
+      13,    1,  108,    2, 0x0a,
+      15,    1,  111,    2, 0x0a,
+      16,    3,  114,    2, 0x0a,
+      16,    2,  121,    2, 0x2a,
+      16,    1,  126,    2, 0x2a,
+      19,    2,  129,    2, 0x0a,
+      19,    1,  134,    2, 0x2a,
+      19,    0,  137,    2, 0x2a,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -177,7 +176,7 @@ void Server::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
 
 const QMetaObject Server::staticMetaObject = {
     { &QTcpSocket::staticMetaObject, qt_meta_stringdata_Server.data,
-      qt_meta_data_Server,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_Server,  qt_static_metacall, 0, 0}
 };
 
 
@@ -188,7 +187,7 @@ const QMetaObject *Server::metaObject() const
 
 void *Server::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_Server.stringdata))
         return static_cast<void*>(const_cast< Server*>(this));
     return QTcpSocket::qt_metacast(_clname);
@@ -214,19 +213,19 @@ int Server::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void Server::pseudoChanged(QString _t1)
 {
-    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
 void Server::joinTab()
 {
-    QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 1, 0);
 }
 
 // SIGNAL 2
 void Server::tabJoined()
 {
-    QMetaObject::activate(this, &staticMetaObject, 2, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 2, 0);
 }
 QT_END_MOC_NAMESPACE

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'rpcchatwindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'rpcchatwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.2. It"
+#error "This file was generated using the moc from 5.2.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,33 +20,32 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_RpcChatWindow_t {
     QByteArrayData data[12];
-    char stringdata[126];
+    char stringdata[127];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_RpcChatWindow_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData)) \
+    offsetof(qt_meta_stringdata_RpcChatWindow_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
     )
 static const qt_meta_stringdata_RpcChatWindow_t qt_meta_stringdata_RpcChatWindow = {
     {
-QT_MOC_LITERAL(0, 0, 13), // "RpcChatWindow"
-QT_MOC_LITERAL(1, 14, 9), // "changeTab"
-QT_MOC_LITERAL(2, 24, 0), // ""
-QT_MOC_LITERAL(3, 25, 12), // "sendCommande"
-QT_MOC_LITERAL(4, 38, 8), // "connecte"
-QT_MOC_LITERAL(5, 47, 8), // "closeTab"
-QT_MOC_LITERAL(6, 56, 10), // "tabChanged"
-QT_MOC_LITERAL(7, 67, 5), // "index"
-QT_MOC_LITERAL(8, 73, 9), // "tabJoined"
-QT_MOC_LITERAL(9, 83, 10), // "tabJoining"
-QT_MOC_LITERAL(10, 94, 20), // "disconnectFromServer"
-QT_MOC_LITERAL(11, 115, 10) // "tabClosing"
-
+QT_MOC_LITERAL(0, 0, 13),
+QT_MOC_LITERAL(1, 14, 9),
+QT_MOC_LITERAL(2, 24, 0),
+QT_MOC_LITERAL(3, 25, 12),
+QT_MOC_LITERAL(4, 38, 8),
+QT_MOC_LITERAL(5, 47, 8),
+QT_MOC_LITERAL(6, 56, 10),
+QT_MOC_LITERAL(7, 67, 5),
+QT_MOC_LITERAL(8, 73, 9),
+QT_MOC_LITERAL(9, 83, 10),
+QT_MOC_LITERAL(10, 94, 20),
+QT_MOC_LITERAL(11, 115, 10)
     },
     "RpcChatWindow\0changeTab\0\0sendCommande\0"
     "connecte\0closeTab\0tabChanged\0index\0"
     "tabJoined\0tabJoining\0disconnectFromServer\0"
-    "tabClosing"
+    "tabClosing\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,17 +63,17 @@ static const uint qt_meta_data_RpcChatWindow[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   59,    2, 0x06 /* Public */,
+       1,    0,   59,    2, 0x06,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,   60,    2, 0x0a /* Public */,
-       4,    0,   61,    2, 0x0a /* Public */,
-       5,    0,   62,    2, 0x0a /* Public */,
-       6,    1,   63,    2, 0x0a /* Public */,
-       8,    0,   66,    2, 0x0a /* Public */,
-       9,    0,   67,    2, 0x0a /* Public */,
-      10,    0,   68,    2, 0x0a /* Public */,
-      11,    1,   69,    2, 0x0a /* Public */,
+       3,    0,   60,    2, 0x0a,
+       4,    0,   61,    2, 0x0a,
+       5,    0,   62,    2, 0x0a,
+       6,    1,   63,    2, 0x0a,
+       8,    0,   66,    2, 0x0a,
+       9,    0,   67,    2, 0x0a,
+      10,    0,   68,    2, 0x0a,
+      11,    1,   69,    2, 0x0a,
 
  // signals: parameters
     QMetaType::Void,
@@ -122,7 +121,7 @@ void RpcChatWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
 
 const QMetaObject RpcChatWindow::staticMetaObject = {
     { &QWidget::staticMetaObject, qt_meta_stringdata_RpcChatWindow.data,
-      qt_meta_data_RpcChatWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_RpcChatWindow,  qt_static_metacall, 0, 0}
 };
 
 
@@ -133,7 +132,7 @@ const QMetaObject *RpcChatWindow::metaObject() const
 
 void *RpcChatWindow::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_RpcChatWindow.stringdata))
         return static_cast<void*>(const_cast< RpcChatWindow*>(this));
     return QWidget::qt_metacast(_clname);
@@ -159,6 +158,6 @@ int RpcChatWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void RpcChatWindow::changeTab()
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
+    QMetaObject::activate(this, &staticMetaObject, 0, 0);
 }
 QT_END_MOC_NAMESPACE

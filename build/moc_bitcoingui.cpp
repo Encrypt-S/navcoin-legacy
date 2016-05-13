@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'bitcoingui.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'bitcoingui.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.2. It"
+#error "This file was generated using the moc from 5.2.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,70 +20,69 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_BitcoinGUI_t {
     QByteArrayData data[54];
-    char stringdata[694];
+    char stringdata[695];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_BitcoinGUI_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData)) \
+    offsetof(qt_meta_stringdata_BitcoinGUI_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
     )
 static const qt_meta_stringdata_BitcoinGUI_t qt_meta_stringdata_BitcoinGUI = {
     {
-QT_MOC_LITERAL(0, 0, 10), // "BitcoinGUI"
-QT_MOC_LITERAL(1, 11, 17), // "setNumConnections"
-QT_MOC_LITERAL(2, 29, 0), // ""
-QT_MOC_LITERAL(3, 30, 5), // "count"
-QT_MOC_LITERAL(4, 36, 12), // "setNumBlocks"
-QT_MOC_LITERAL(5, 49, 12), // "nTotalBlocks"
-QT_MOC_LITERAL(6, 62, 19), // "setEncryptionStatus"
-QT_MOC_LITERAL(7, 82, 6), // "status"
-QT_MOC_LITERAL(8, 89, 5), // "error"
-QT_MOC_LITERAL(9, 95, 5), // "title"
-QT_MOC_LITERAL(10, 101, 7), // "message"
-QT_MOC_LITERAL(11, 109, 5), // "modal"
-QT_MOC_LITERAL(12, 115, 6), // "askFee"
-QT_MOC_LITERAL(13, 122, 12), // "nFeeRequired"
-QT_MOC_LITERAL(14, 135, 5), // "bool*"
-QT_MOC_LITERAL(15, 141, 6), // "payFee"
-QT_MOC_LITERAL(16, 148, 9), // "handleURI"
-QT_MOC_LITERAL(17, 158, 6), // "strURI"
-QT_MOC_LITERAL(18, 165, 16), // "gotoOverviewPage"
-QT_MOC_LITERAL(19, 182, 15), // "gotoHistoryPage"
-QT_MOC_LITERAL(20, 198, 19), // "gotoAddressBookPage"
-QT_MOC_LITERAL(21, 218, 20), // "gotoReceiveCoinsPage"
-QT_MOC_LITERAL(22, 239, 17), // "gotoSendCoinsPage"
-QT_MOC_LITERAL(23, 257, 14), // "gotoChatWindow"
-QT_MOC_LITERAL(24, 272, 15), // "gotoRpcChatPage"
-QT_MOC_LITERAL(25, 288, 18), // "gotoSignMessageTab"
-QT_MOC_LITERAL(26, 307, 4), // "addr"
-QT_MOC_LITERAL(27, 312, 20), // "gotoVerifyMessageTab"
-QT_MOC_LITERAL(28, 333, 14), // "optionsClicked"
-QT_MOC_LITERAL(29, 348, 12), // "aboutClicked"
-QT_MOC_LITERAL(30, 361, 10), // "urlClicked"
-QT_MOC_LITERAL(31, 372, 11), // "urlClicked1"
-QT_MOC_LITERAL(32, 384, 11), // "urlClicked2"
-QT_MOC_LITERAL(33, 396, 11), // "urlClicked3"
-QT_MOC_LITERAL(34, 408, 11), // "urlClicked4"
-QT_MOC_LITERAL(35, 420, 11), // "urlClicked5"
-QT_MOC_LITERAL(36, 432, 11), // "urlClicked6"
-QT_MOC_LITERAL(37, 444, 17), // "trayIconActivated"
-QT_MOC_LITERAL(38, 462, 33), // "QSystemTrayIcon::ActivationRe..."
-QT_MOC_LITERAL(39, 496, 6), // "reason"
-QT_MOC_LITERAL(40, 503, 19), // "incomingTransaction"
-QT_MOC_LITERAL(41, 523, 6), // "parent"
-QT_MOC_LITERAL(42, 530, 5), // "start"
-QT_MOC_LITERAL(43, 536, 3), // "end"
-QT_MOC_LITERAL(44, 540, 13), // "encryptWallet"
-QT_MOC_LITERAL(45, 554, 12), // "backupWallet"
-QT_MOC_LITERAL(46, 567, 16), // "changePassphrase"
-QT_MOC_LITERAL(47, 584, 12), // "unlockWallet"
-QT_MOC_LITERAL(48, 597, 10), // "lockWallet"
-QT_MOC_LITERAL(49, 608, 18), // "stakeReportClicked"
-QT_MOC_LITERAL(50, 627, 21), // "showNormalIfMinimized"
-QT_MOC_LITERAL(51, 649, 13), // "fToggleHidden"
-QT_MOC_LITERAL(52, 663, 12), // "toggleHidden"
-QT_MOC_LITERAL(53, 676, 17) // "updateStakingIcon"
-
+QT_MOC_LITERAL(0, 0, 10),
+QT_MOC_LITERAL(1, 11, 17),
+QT_MOC_LITERAL(2, 29, 0),
+QT_MOC_LITERAL(3, 30, 5),
+QT_MOC_LITERAL(4, 36, 12),
+QT_MOC_LITERAL(5, 49, 12),
+QT_MOC_LITERAL(6, 62, 19),
+QT_MOC_LITERAL(7, 82, 6),
+QT_MOC_LITERAL(8, 89, 5),
+QT_MOC_LITERAL(9, 95, 5),
+QT_MOC_LITERAL(10, 101, 7),
+QT_MOC_LITERAL(11, 109, 5),
+QT_MOC_LITERAL(12, 115, 6),
+QT_MOC_LITERAL(13, 122, 12),
+QT_MOC_LITERAL(14, 135, 5),
+QT_MOC_LITERAL(15, 141, 6),
+QT_MOC_LITERAL(16, 148, 9),
+QT_MOC_LITERAL(17, 158, 6),
+QT_MOC_LITERAL(18, 165, 16),
+QT_MOC_LITERAL(19, 182, 15),
+QT_MOC_LITERAL(20, 198, 19),
+QT_MOC_LITERAL(21, 218, 20),
+QT_MOC_LITERAL(22, 239, 17),
+QT_MOC_LITERAL(23, 257, 14),
+QT_MOC_LITERAL(24, 272, 15),
+QT_MOC_LITERAL(25, 288, 18),
+QT_MOC_LITERAL(26, 307, 4),
+QT_MOC_LITERAL(27, 312, 20),
+QT_MOC_LITERAL(28, 333, 14),
+QT_MOC_LITERAL(29, 348, 12),
+QT_MOC_LITERAL(30, 361, 10),
+QT_MOC_LITERAL(31, 372, 11),
+QT_MOC_LITERAL(32, 384, 11),
+QT_MOC_LITERAL(33, 396, 11),
+QT_MOC_LITERAL(34, 408, 11),
+QT_MOC_LITERAL(35, 420, 11),
+QT_MOC_LITERAL(36, 432, 11),
+QT_MOC_LITERAL(37, 444, 17),
+QT_MOC_LITERAL(38, 462, 33),
+QT_MOC_LITERAL(39, 496, 6),
+QT_MOC_LITERAL(40, 503, 19),
+QT_MOC_LITERAL(41, 523, 6),
+QT_MOC_LITERAL(42, 530, 5),
+QT_MOC_LITERAL(43, 536, 3),
+QT_MOC_LITERAL(44, 540, 13),
+QT_MOC_LITERAL(45, 554, 12),
+QT_MOC_LITERAL(46, 567, 16),
+QT_MOC_LITERAL(47, 584, 12),
+QT_MOC_LITERAL(48, 597, 10),
+QT_MOC_LITERAL(49, 608, 18),
+QT_MOC_LITERAL(50, 627, 21),
+QT_MOC_LITERAL(51, 649, 13),
+QT_MOC_LITERAL(52, 663, 12),
+QT_MOC_LITERAL(53, 676, 17)
     },
     "BitcoinGUI\0setNumConnections\0\0count\0"
     "setNumBlocks\0nTotalBlocks\0setEncryptionStatus\0"
@@ -102,7 +101,7 @@ QT_MOC_LITERAL(53, 676, 17) // "updateStakingIcon"
     "start\0end\0encryptWallet\0backupWallet\0"
     "changePassphrase\0unlockWallet\0lockWallet\0"
     "stakeReportClicked\0showNormalIfMinimized\0"
-    "fToggleHidden\0toggleHidden\0updateStakingIcon"
+    "fToggleHidden\0toggleHidden\0updateStakingIcon\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -120,44 +119,44 @@ static const uint qt_meta_data_BitcoinGUI[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,  204,    2, 0x0a /* Public */,
-       4,    2,  207,    2, 0x0a /* Public */,
-       6,    1,  212,    2, 0x0a /* Public */,
-       8,    3,  215,    2, 0x0a /* Public */,
-      12,    2,  222,    2, 0x0a /* Public */,
-      16,    1,  227,    2, 0x0a /* Public */,
-      18,    0,  230,    2, 0x08 /* Private */,
-      19,    0,  231,    2, 0x08 /* Private */,
-      20,    0,  232,    2, 0x08 /* Private */,
-      21,    0,  233,    2, 0x08 /* Private */,
-      22,    0,  234,    2, 0x08 /* Private */,
-      23,    0,  235,    2, 0x08 /* Private */,
-      24,    0,  236,    2, 0x08 /* Private */,
-      25,    1,  237,    2, 0x08 /* Private */,
-      25,    0,  240,    2, 0x28 /* Private | MethodCloned */,
-      27,    1,  241,    2, 0x08 /* Private */,
-      27,    0,  244,    2, 0x28 /* Private | MethodCloned */,
-      28,    0,  245,    2, 0x08 /* Private */,
-      29,    0,  246,    2, 0x08 /* Private */,
-      30,    0,  247,    2, 0x08 /* Private */,
-      31,    0,  248,    2, 0x08 /* Private */,
-      32,    0,  249,    2, 0x08 /* Private */,
-      33,    0,  250,    2, 0x08 /* Private */,
-      34,    0,  251,    2, 0x08 /* Private */,
-      35,    0,  252,    2, 0x08 /* Private */,
-      36,    0,  253,    2, 0x08 /* Private */,
-      37,    1,  254,    2, 0x08 /* Private */,
-      40,    3,  257,    2, 0x08 /* Private */,
-      44,    1,  264,    2, 0x08 /* Private */,
-      45,    0,  267,    2, 0x08 /* Private */,
-      46,    0,  268,    2, 0x08 /* Private */,
-      47,    0,  269,    2, 0x08 /* Private */,
-      48,    0,  270,    2, 0x08 /* Private */,
-      49,    0,  271,    2, 0x08 /* Private */,
-      50,    1,  272,    2, 0x08 /* Private */,
-      50,    0,  275,    2, 0x28 /* Private | MethodCloned */,
-      52,    0,  276,    2, 0x08 /* Private */,
-      53,    0,  277,    2, 0x08 /* Private */,
+       1,    1,  204,    2, 0x0a,
+       4,    2,  207,    2, 0x0a,
+       6,    1,  212,    2, 0x0a,
+       8,    3,  215,    2, 0x0a,
+      12,    2,  222,    2, 0x0a,
+      16,    1,  227,    2, 0x0a,
+      18,    0,  230,    2, 0x08,
+      19,    0,  231,    2, 0x08,
+      20,    0,  232,    2, 0x08,
+      21,    0,  233,    2, 0x08,
+      22,    0,  234,    2, 0x08,
+      23,    0,  235,    2, 0x08,
+      24,    0,  236,    2, 0x08,
+      25,    1,  237,    2, 0x08,
+      25,    0,  240,    2, 0x28,
+      27,    1,  241,    2, 0x08,
+      27,    0,  244,    2, 0x28,
+      28,    0,  245,    2, 0x08,
+      29,    0,  246,    2, 0x08,
+      30,    0,  247,    2, 0x08,
+      31,    0,  248,    2, 0x08,
+      32,    0,  249,    2, 0x08,
+      33,    0,  250,    2, 0x08,
+      34,    0,  251,    2, 0x08,
+      35,    0,  252,    2, 0x08,
+      36,    0,  253,    2, 0x08,
+      37,    1,  254,    2, 0x08,
+      40,    3,  257,    2, 0x08,
+      44,    1,  264,    2, 0x08,
+      45,    0,  267,    2, 0x08,
+      46,    0,  268,    2, 0x08,
+      47,    0,  269,    2, 0x08,
+      48,    0,  270,    2, 0x08,
+      49,    0,  271,    2, 0x08,
+      50,    1,  272,    2, 0x08,
+      50,    0,  275,    2, 0x28,
+      52,    0,  276,    2, 0x08,
+      53,    0,  277,    2, 0x08,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -252,7 +251,7 @@ void BitcoinGUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
 
 const QMetaObject BitcoinGUI::staticMetaObject = {
     { &QMainWindow::staticMetaObject, qt_meta_stringdata_BitcoinGUI.data,
-      qt_meta_data_BitcoinGUI,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_BitcoinGUI,  qt_static_metacall, 0, 0}
 };
 
 
@@ -263,7 +262,7 @@ const QMetaObject *BitcoinGUI::metaObject() const
 
 void *BitcoinGUI::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_BitcoinGUI.stringdata))
         return static_cast<void*>(const_cast< BitcoinGUI*>(this));
     return QMainWindow::qt_metacast(_clname);
