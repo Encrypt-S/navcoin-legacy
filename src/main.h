@@ -39,7 +39,6 @@ static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
 static const int64_t MAX_MONEY = 60000000 * COIN;
 static const int64_t COIN_YEAR_REWARD = 1 * CENT; // 1% per year
 static const int64_t MAX_MINT_PROOF_OF_STAKE = 0.1 * COIN;	// 10% annual interest
-static const int MAX_TIME_SINCE_BEST_BLOCK = 10;
 
 #define FOUNDATION "sZD2Tv6HpfT1q3aHKRUHopy1T6Ge8UYLtZ"
 #define FOUNDATION_TEST "sZD2Tv6HpfT1q3aHKRUHopy1T6Ge8UYLtZ"
