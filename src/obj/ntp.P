@@ -1,6 +1,0 @@
-obj/ntp.o: ntp.cpp netbase.h serialize.h allocators.h version.h \
- clientversion.h compat.h net.h mruset.h protocol.h uint256.h addrman.h \
- util.h uint256_t.h sync.h ui_interface.h
-ntp.cpp netbase.h serialize.h allocators.h version.h :
- clientversion.h compat.h net.h mruset.h protocol.h uint256.h addrman.h :
- util.h uint256_t.h sync.h ui_interface.h :
