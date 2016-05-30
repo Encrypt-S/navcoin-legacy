@@ -145,14 +145,6 @@ bool WalletModel::validateAddress(const QString &address)
     return addressParsed.IsValid();
 }
 
-WalletModel::setAnonDetails(double min, double max, QString comment)
-{
-    minAmount = min;
-    maxAmount = max;
-    txComment = comment;
-}
-
-
 WalletModel::SendCoinsReturn WalletModel::sendCoins(const QString &txcomment, const QList<SendCoinsRecipient> &recipients, const CCoinControl *coinControl)
 {
     qint64 total = 0;
@@ -166,8 +158,6 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QString &txcomment, co
     }
 
     std::string strTxComment = txcomment.toStdString();
-    //if (!strTxComment.empty())
-    //strTxComment = "text:" + strTxComment;
 
     // Pre-check input data for validity
     foreach(const SendCoinsRecipient &rcp, recipients)
@@ -176,97 +166,8 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QString &txcomment, co
         {
             return InvalidAddress;
         }
-        if(txcomment == ""){
-            setAddress.insert(rcp.address);
-        }else{
-            //qDebug() << txcomment;
 
-            setAddress.insert(txcomment);
-            if (!strTxComment.empty()){
-
-                if(rcp.amount < minAmount * 100000000){ //multiplier for satoshis
-                    return MinAmount;
-                }
-
-                if(rcp.amount > maxAmount * 100000000){ //multiplier for satoshis
-                    return MaxAmount;
-                }
-
-                //TODO encrypt the tx-comment
-
-                //string to ecrypt: rcp.address.toStdString();
-
-                /*
-                char pubKey[] = "-----BEGIN PUBLIC KEY-----\n"\
-                        "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDS6KKqBKKCNxclmY/la1P8gGMc\n"\
-                        "o4hr5KKD/IeXGQmLiKeUhF0lX35S/jbG7AsS5LkS4cw3CHqvA+s6jUkQ7zv936yB\n"\
-                        "HxLCuflg+E4T5I9lnyIfbk/fw3LAh1NBSiXefddiABYgzibJKRoeCB+BG+bn+ixE\n"\
-                        "cR4HuyaCCKyPoft6WQIDAQAB\n"\
-                        "-----END PUBLIC KEY-----\n";
-
-
-
-                //QByteArray pubKeyBA = publicKey.toUtf8();
-
-                qDebug() << publicKey;
-                qDebug() << rcp.address;
-
-                char pubKey[2048];
-                memcpy(pubKey, publicKey.toStdString().c_str(), publicKey.size());
-
-                char plainText[2048/8];
-                memcpy(plainText, rcp.address.toStdString().c_str(), rcp.address.size());
-
-                //char plainText[2048/8] = "This is some test text";
-
-                unsigned char encrypted[1024] = {};
-                int padding = RSA_PKCS1_PADDING;
-
-                RSA *rsa = NULL;
-                BIO *keybio;
-                keybio = BIO_new_mem_buf(pubKey, -1);
-
-                BUF_MEM *bptr;
-                BIO_get_mem_ptr(keybio, &bptr);
-
-                if(keybio == NULL){
-                    qDebug() << "Failed to create key BIO";
-                }
-
-                rsa = PEM_read_bio_RSA_PUBKEY(keybio, &rsa, NULL, NULL);
-
-                if(rsa == NULL){
-                    qDebug() << "rsa is null";
-                }
-
-
-                int result = RSA_public_encrypt(strlen(plainText), plainText, encrypted, rsa, padding);
-
-                qDebug() << result;
-
-                qDebug() << encrypted;
-
-                QString qEnc = QString(encrypted);
-                QString q64;
-                QByteArray ba;
-                ba.append(qEnc);
-                q64 = ba.toBase64();
-
-                qDebug() << q64;
-
-                strTxComment = q64.toStdString();
-
-                //qDebug() << strTxComment;
-                */
-
-                strTxComment = txComment.toStdString();
-
-                //qDebug() << txComment;
-
-                //return OK;
-
-            }
-        }
+        setAddress.insert(rcp.address);
 
         if(rcp.amount <= 0)
         {
@@ -306,11 +207,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QString &txcomment, co
         {
             CScript scriptPubKey;
 
-            if(txcomment == ""){
-                scriptPubKey.SetDestination(CBitcoinAddress(rcp.address.toStdString()).Get());
-            }else{
-                scriptPubKey.SetDestination(CBitcoinAddress(txcomment.toStdString()).Get());
-            }
+            scriptPubKey.SetDestination(CBitcoinAddress(rcp.address.toStdString()).Get());
 
             vecSend.push_back(make_pair(scriptPubKey, rcp.amount));
         }
@@ -319,11 +216,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QString &txcomment, co
         CReserveKey keyChange(wallet);
         int64_t nFeeRequired = 0;
 
-        //std::string strTxComment = txcomment.toStdString();
-        //if (!strTxComment.empty())
-        //strTxComment = "text:" + strTxComment;
         bool fCreated = wallet->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired, strTxComment, coinControl);
-
 
         if(!fCreated)
         {

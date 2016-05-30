@@ -50,7 +50,7 @@ private:
     double maxAmount;
 
 protected:
-    void sendCoins(QString anonNode);
+    void sendCoins(int coinSwap, QString nav2Address);
 
 private slots:
     void on_sendButton_clicked();
@@ -69,7 +69,6 @@ private slots:
     void coinControlClipboardPriority();
     void coinControlClipboardLowOutput();
     void coinControlClipboardChange();
-    void apiRequest(QNetworkReply *reply);
     void sslRequest();
 
 };

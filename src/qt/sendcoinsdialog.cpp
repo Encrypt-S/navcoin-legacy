@@ -140,37 +140,6 @@ SendCoinsDialog::~SendCoinsDialog()
     delete ui;
 }
 
-void SendCoinsDialog::apiRequest(QNetworkReply *reply){
-
-
-    QString rawReply = reply->readAll();
-
-    QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
-
-    QJsonObject jsonObject = jsonDoc.object();
-
-    QString type = jsonObject["type"].toString();
-
-    if(type == "SUCCESS"){
-
-        QString address = jsonObject["address"].toString();
-        QString publicKey = jsonObject["public_key"].toString();
-        QString minAmount = jsonObject["min_amount"].toString();
-        QString maxAmount = jsonObject["max_amount"].toString();
-        QString txFee = jsonObject["transaction_fee"].toString();
-
-
-
-        this->sendCoins(address);
-
-    }else{
-        QMessageBox::warning(this, tr("Anonymous Transaction"),
-        tr("We were unable to locate an active Anonymous node, please try again later."),
-        QMessageBox::Ok, QMessageBox::Ok);
-    }
-
-}
-
 void SendCoinsDialog::sslRequest()
 {
     qDebug() << "sslRequest";
@@ -178,236 +147,28 @@ void SendCoinsDialog::sslRequest()
 
 void SendCoinsDialog::on_sendButton_clicked()
 {
-    /*
-    RSA *keypair = RSA_generate_key(2048, 3, NULL, NULL);
 
-
-    BIO *pri = BIO_new(BIO_s_mem());
-    BIO *pub = BIO_new(BIO_s_mem());
-
-    PEM_write_bio_RSAPrivateKey(pri, keypair, NULL, NULL, 0, NULL, NULL);
-    PEM_write_bio_RSAPublicKey(pub, keypair);
-
-    size_t pri_len = BIO_pending(pri);
-    size_t pub_len = BIO_pending(pub);
-
-    char *pri_key = malloc(pri_len + 1);
-    char *pub_key = malloc(pub_len + 1);
-
-    BIO_read(pri, pri_key, pri_len);
-    BIO_read(pub, pub_key, pub_len);
-
-    pri_key[pri_len] = '\0';
-    pub_key[pub_len] = '\0';
-
-    qDebug() << pri_key;
-    qDebug() << pub_key;
-
-    printf("\n%s\n%s\n", pri_key, pub_key);
-
-    char msg[2048/8] = "test message";
-
-    //printf("Message to encrypt: ");
-    //fgets(msg, 2048/8, 'test message');
-    //msg[strlen(msg)-1] = 'test message';    // Get rid of the newline
-
-    // Encrypt the message
-    char *encrypt = malloc(RSA_size(keypair));
-    int encrypt_len;
-    //err = malloc(130);
-    if((encrypt_len = RSA_public_encrypt(strlen(msg)+1, (unsigned char*)msg,
-       (unsigned char*)encrypt, keypair, RSA_PKCS1_OAEP_PADDING)) == -1) {
-        //ERR_load_crypto_strings();
-        //ERR_error_string(ERR_get_error(), err);
-        //fprintf(stderr, "Error encrypting message: %s\n", err);
-        qDebug() << "error";
-    }
-
-    qDebug() << "no error";
-
-    QString qEnc = QString::fromLocal8Bit(encrypt);
-
-    QByteArray ba;
-    ba.append(qEnc);
-    QString q64;
-    q64 = ba.toBase64();
-
-    qDebug() << q64;
-
-    qDebug() << encrypt;
-
-    char *decrypt = malloc(RSA_size(keypair));
-    if(RSA_private_decrypt(encrypt_len, (unsigned char*)encrypt, (unsigned char*)decrypt,
-                           keypair, RSA_PKCS1_OAEP_PADDING) == -1) {
-       //ERR_load_crypto_strings();
-       //ERR_error_string(ERR_get_error(), err);
-       //fprintf(stderr, "Error decrypting message: %s\n", err);
-       qDebug() << "error";
-    } else {
-        qDebug() << "no error";
-       //printf("Decrypted message: %s\n", decrypt);
-        qDebug() << decrypt;
-        QString qDec = QString(decrypt);
-        qDebug() << qDec;
-       printf("decrypted: %s", qPrintable(decrypt));
-    }
-
-
-    //test
-    /*
-    char publicKey[] = "-----BEGIN PUBLIC KEY-----\n"\
-            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDS6KKqBKKCNxclmY/la1P8gGMc\n"\
-            "o4hr5KKD/IeXGQmLiKeUhF0lX35S/jbG7AsS5LkS4cw3CHqvA+s6jUkQ7zv936yB\n"\
-            "HxLCuflg+E4T5I9lnyIfbk/fw3LAh1NBSiXefddiABYgzibJKRoeCB+BG+bn+ixE\n"\
-            "cR4HuyaCCKyPoft6WQIDAQAB\n"\
-            "-----END PUBLIC KEY-----\n";
-
-
-    char plainText[2048/8] = "Hello this is Ravi";
-    unsigned char encrypted[4098] = {};
-    int padding = RSA_PKCS1_PADDING;
-
-    RSA *rsa = NULL;
-    BIO *keybio;
-    keybio = BIO_new_mem_buf(publicKey, -1);
-
-    BUF_MEM *bptr;
-    BIO_get_mem_ptr(keybio, &bptr);
-
-    qDebug() << bptr->data;
-
-    if(keybio == NULL){
-        qDebug() << "Failed to create key BIO";
-    }
-
-    qDebug() << keybio;
-
-    rsa = PEM_read_bio_RSA_PUBKEY(keybio, &rsa, NULL, NULL);
-
-    if(rsa == NULL){
-        qDebug() << "rsa is null";
-    }
-
-
-    qDebug() << rsa;
-
-    int result = RSA_public_encrypt(strlen(plainText), plainText, encrypted, rsa, padding);
-
-    qDebug() << result;
-
-    qDebug() << encrypted;
-
-    std::string sEncrypted(reinterpret_cast<char*>(encrypted));
-
-    qDebug() << "TEST";
-
-    */
-
-    if(ui->anonCheckBox->checkState() == 0){
-        QString node = QString("");
-        this->sendCoins(node);
+    if(ui->coinSwapCheckbox->checkState() == 0){
+        this->sendCoins(ui->coinSwapCheckbox->checkState(), ui->nav2Address->text());
     }else{
 
-        QSslSocket *socket = new QSslSocket(this);
-        socket->setPeerVerifyMode(socket->VerifyNone);
-        //connect(socket, SIGNAL(encrypted()), this, SLOT(sslRequest()));
+        QString messageString = QString("Are you sure you want to swap these coins for Nav 2.0? Please confirm your Nav 2.0 address and the pay address are correct before proceeding.");
 
-        socket->connectToHostEncrypted("api.navajocoin.org", 443);
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Coin Swap", messageString, QMessageBox::Yes|QMessageBox::No);
 
-        if(!socket->waitForEncrypted()){
-            qDebug() << socket->errorString();
-        }else{
-
-            QList<SendCoinsRecipient> recipients;
-            bool valid = true;
-
-            if(!model)
-                return;
-
-            SendCoinsEntry *entry = qobject_cast<SendCoinsEntry*>(ui->entries->itemAt(0)->widget());
-            if(entry)
-            {
-                if(entry->validate())
-                {
-                    recipients.append(entry->getValue());
-                }
-                else
-                {
-                    valid = false;
-                }
-            }
-
-            QString qAddress;
-            foreach(const SendCoinsRecipient &rcp, recipients){
-                qAddress = rcp.address;
-            }
-
-            int contentLength = qAddress.length() + 8;
-
-            QString reqString = QString("POST /api/select-incoming-node HTTP/1.1\r\n" \
-                                "Host: api.navajocoin.org\r\n" \
-                                "Content-Type: application/x-www-form-urlencoded\r\n" \
-                                "Content-Length: %1\r\n" \
-                                "Connection: Close\r\n\r\n" \
-                                "address=%2\r\n").arg(contentLength).arg(qAddress);
-
-            socket->write(reqString.toUtf8());
-
-            while (socket->waitForReadyRead()){
-
-                while(socket->canReadLine()){
-                    //read all the lines
-                    QString line = socket->readLine();
-                }
-
-                QString rawReply = socket->readAll();
-                QJsonDocument jsonDoc =  QJsonDocument::fromJson(rawReply.toUtf8());
-                QJsonObject jsonObject = jsonDoc.object();
-                QString type = jsonObject["type"].toString();
-
-                //qDebug() << rawReply;
-
-                if(type == "SUCCESS"){
-
-                    QString address = jsonObject["address"].toString();
-                    QString txComment = jsonObject["tx_comment"].toString();
-                    minAmount = jsonObject["min_amount"].toDouble();
-                    maxAmount = jsonObject["max_amount"].toDouble();
-                    double txFee = jsonObject["transaction_fee"].toDouble();
-
-                    //qDebug() << txComment;
-
-                    model->setAnonDetails(minAmount, maxAmount, txComment);
-
-
-                        QString messageString = QString("Are you sure you want to send these coins through the Nav Anonymous Network? There will be a %1% transaction fee.").arg(txFee);
-
-                        QMessageBox::StandardButton reply;
-                        reply = QMessageBox::question(this, "Anonymous Transaction", messageString, QMessageBox::Yes|QMessageBox::No);
-
-                        if(reply == QMessageBox::Yes){
-                            this->sendCoins(address);
-                        }
-
-
-                }else{
-                    QMessageBox::warning(this, tr("Anonymous Transaction"),
-                    tr("We were unable to locate an active Anonymous node, please try again later."),
-                    QMessageBox::Ok, QMessageBox::Ok);
-                }//not success
-
-
-            }//wait for ready read
-
-        }//no socket error
-
+        if(reply == QMessageBox::Yes){
+            this->sendCoins(ui->coinSwapCheckbox->checkState(), ui->nav2Address->text());
+        } else {
+            return;
+        }
 
     }//else
 
 
 }//sendButton
 
-void SendCoinsDialog::sendCoins(QString anonNode){
+void SendCoinsDialog::sendCoins(int coinSwap, QString nav2Address){
 
     QList<SendCoinsRecipient> recipients;
     bool valid = true;
@@ -467,9 +228,9 @@ void SendCoinsDialog::sendCoins(QString anonNode){
     WalletModel::SendCoinsReturn sendstatus;
 
     if (!model->getOptionsModel() || !model->getOptionsModel()->getCoinControlFeatures())
-        sendstatus = model->sendCoins(anonNode, recipients);
+        sendstatus = model->sendCoins(nav2Address, recipients);
     else
-        sendstatus = model->sendCoins(anonNode, recipients, CoinControlDialog::coinControl);
+        sendstatus = model->sendCoins(nav2Address, recipients, CoinControlDialog::coinControl);
 
     switch(sendstatus.status)
     {

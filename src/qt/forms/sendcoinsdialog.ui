@@ -23,11 +23,28 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="QCheckBox" name="anonCheckBox">
+      <widget class="QCheckBox" name="coinSwapCheckbox">
        <property name="text">
-        <string>Send Coins Anonymously</string>
+        <string>Swap Nav for Nav 2.0</string>
        </property>
       </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Nav 2.0 Address</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="nav2Address"/>
      </item>
     </layout>
    </item>
@@ -660,7 +677,7 @@ padding: 4px;</string>
         <x>0</x>
         <y>0</y>
         <width>830</width>
-        <height>119</height>
+        <height>84</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
