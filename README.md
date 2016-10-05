@@ -1,7 +1,7 @@
+## ATTENTION
 
-NavCoin
+This is the old Nav Coin Repo for v1.0 of the coin. For the latest source code please see our new repository:
 
-A x13 PoW / PoS coin With Decentralized "NAV Anonymous Technology" 
+https://github.com/navcoindev/navcoin2
 
-We will soon launch a website and for now visit the thread over at https://bitcointalk.org/index.php?topic=679791
-
+http://www.navcoin.org
